@@ -1,0 +1,147 @@
+<div class="top-panel">
+    <div class="l-page-width clearfix">
+        <div class="wrapper">
+            <div class="widget widget_cws_tweets">
+                <div class='cws-widget-content '>
+                    <div class="latest_tweets ">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ .top-panel-->
+<div class="kids-bg-level-1">
+    <div class="bg-level-1"></div>
+    <ng-include src="'./layouts/header.view.html'"></ng-include>
+
+    <!-- HEADER END -->
+</div>
+<!-- .bg-level-1 -->
+<div id="kids_middle_container">
+    <!-- .content -->
+    <div class="kids_top_content">
+        <div class="kids_top_content_middle ">
+            <div class="header_container ">
+                <div class="l-page-width">
+                    <h1>Quiz- Question {{position}} / {{length}}</h1>
+                    <ul id="breadcrumbs">
+                        <li><a href="#" title="Home">Home</a></li> <span class="delimiter">&gt;</span>
+                        <li><span class="current_crumb">Full Width</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- .kids_top_content_middle -->
+    </div>
+    <div class="bg-level-2-full-width-container kids_bottom_content">
+        <div class="bg-level-2-page-width-container no-padding">
+            <section class="kids_bottom_content_container">
+                <!-- ***************** - START Image floating - *************** -->
+                <div class="page-content">
+                    <div class="bg-level-2 first-part"></div>
+                    <div class="container l-page-width">
+                        <div class="entry-container ">
+                            <main class="blog">
+                                <article class="post-item">
+
+                                    <div ng-hide="position!=0">
+
+
+                                        <!--/ post-meta-->
+                                        <div class="post-entry">
+
+                                            <div class="entry">
+                                                <div class="post-title">
+                                                    <a ng-click="startQuiz('normal')">Commencer le quiz</a><br>
+                                                    <a ng-click="startQuiz('blind')">Commencer une session pour les aveugles</a>
+                                                </div>
+
+
+                                            </div>
+                                            <!--/ entry-->
+                                        </div>
+
+                                    </div>
+
+                                    <div ng-show="position==length">
+
+                                        <!--/ post-meta-->
+                                        <div class="post-entry">
+
+                                            <div class="entry">
+                                                <div class="post-title">
+                                                    <a>Vous avez {{score}} / {{length}} réponses correctes</a>
+                                                </div>
+
+
+                                            </div>
+                                            <!--/ entry-->
+                                        </div>
+
+                                    </div>
+
+                                    <div ng-hide="position==length || position==0">
+                                    <div class="post-meta">
+                                        <div class="post-date">
+                                            <span class="day">{{score}}</span>
+                                            <span class="month">Scores</span>
+                                        </div>
+                                        <!--/ post-date-->
+                                    </div>
+                                    <!--/ post-meta-->
+                                    <div class="post-entry">
+
+                                        <div class="entry">
+                                            <div class="post-title">
+                                                <a>{{question.Question}}</a>
+                                            </div>
+
+                                            <form>
+                                                <input type="radio" ng-model="myVar" value="A">{{question.Reponses[0]}}<br>
+                                                <input type="radio" ng-model="myVar" value="B">{{question.Reponses[1]}}<br>
+                                                <input type="radio" ng-model="myVar" value="C">{{question.Reponses[2]}}
+                                            </form>
+
+
+                                        </div>
+                                        <!--/ entry-->
+                                    </div>
+                                    <!--/ post-entry -->
+                                    <div class="post-footer">
+                                        <span ng-click="getQuestion()" class="more-link cws_button l-float-right">Question suivant</span>                                        <div class="post_cats">
+                                            <p><span>Category:</span><a class="link" href="#" title="View all posts in">{{rep}}</a></p>
+                                        </div>
+                                        <!--/ post-cats -->
+                                        <div class="post_tags">
+                                            <p><span>Tags:</span>
+                                                <a href='#' title='Tag' class='link'>Blog</a> </p>
+                                        </div>
+                                        <!--/ post-tags -->
+                                        <div class="kids_clear"></div>
+                                    </div>
+                                    </div>
+
+                                    <!--/ post-footer-->
+                                </article>
+
+                                <!-- comments block -->
+                                <!-- //end comments block -->
+                            </main>
+                            <div class="kids_clear"></div>
+                        </div>
+                        <!-- .entry-container -->
+                    </div>
+                    <div class="bg-level-2 second-part"></div>
+                </div>
+                <!-- ***************** - END Image floating - *************** -->
+            </section>
+            <!-- .bottom_content_container -->
+        </div>
+        <div class="content_bottom_bg"></div>
+    </div>
+</div>
+<!-- .end_content -->
+
+<ng-include src="'./layouts/footer.view.html'"></ng-include>

@@ -1,0 +1,107 @@
+
+<!-- HEADER BEGIN -->
+<div class="top-panel">
+    <div class="l-page-width clearfix">
+        <div class="wrapper">
+            <div class="widget widget_cws_tweets">
+                <div class='cws-widget-content '>
+                    <div class="latest_tweets ">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ .top-panel-->
+<div class="kids-bg-level-1">
+    <div class="bg-level-1"></div>
+    <ng-include src="'./layouts/header.view.html'"></ng-include>
+    <!--/ #kids_header-->
+    <!-- HEADER END -->
+</div>
+<!-- .bg-level-1 -->
+<div id="kids_middle_container">
+    <!-- .content -->
+    <div class="kids_top_content">
+        <div class="kids_top_content_middle ">
+            <div class="header_container ">
+                <div class="l-page-width">
+                    <h1> Shop </h1>
+                    <ul id="breadcrumbs">
+                        <nav class="woocommerce-breadcrumb"><a href="index-2.html">Home</a> > <a href="shop.html">Shop</a> > Page 1</nav>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- .kids_top_content_middle -->
+    </div>
+    <div class="bg-level-2-full-width-container kids_bottom_content">
+        <div class="bg-level-2-page-width-container no-padding">
+            <!-- ***************** - START WooCommerce integration - *************** -->
+            <section class="kids_bottom_content_container">
+                <div class="page-content">
+                    <div class="bg-level-2 first-part"></div>
+                    <div class="container l-page-width">
+                        <div class="entry-container single-sidebar">
+                            <main class="shop">
+                                <div id="container">
+                                    <div id="content" role="main">
+                                        <p class="woocommerce-result-count">
+                                            Showing 1–9 of 23 results</p>
+                                        <form class="woocommerce-ordering" method="get">
+                                            <select name="orderby" class="orderby">
+                                                <option value="menu_order">Default sorting</option>
+                                                <option value="popularity" selected='selected'>Sort by popularity</option>
+                                                <option value="rating">Sort by average rating</option>
+                                                <option value="date">Sort by newness</option>
+                                                <option value="price">Sort by price: low to high</option>
+                                                <option value="price-desc">Sort by price: high to low</option>
+                                            </select>
+                                            <input type="hidden" name="post_type" value="product" />
+                                            <input type="hidden" name="paged" value="1" />
+                                        </form>
+                                        <ul class="products">
+                                            <li class="first product has-post-thumbnail" ng-repeat="p in products">
+                                                <div class="sale-wrapper"></div>
+                                                <div class="content-wrapper">
+                                                    <figure>
+                                                        <a href="pic/woocommerce/cd_4_angle.jpg" data-rel="prettyPhoto" class="prettyPhoto kids_picture" title="cd_4_angle">
+                                                            <img src="pic/woocommerce/250x250-img-4.jpg" class="attachment-shop_catalog" alt="cd_4_angle" /></a>
+                                                    </figure>
+                                                </div>
+                                                <a href="shop-single-item.html">
+                                                    <div class="title">{{p.productName}}</div>
+                                                </a>
+                                                <span class="price"><span class="amount">{{p.price}} €</span></span>
+                                                <a href="#" rel="nofollow" class="button add_to_cart_button product_type_simple">Add to cart</a>
+                                            </li>
+
+                                        </ul>
+                                        <div class="pagenavi gl">
+                                            <ul class='page-numbers'>
+                                                <li><span class='page-numbers current'>1</span></li>
+                                                <li><a class='page-numbers' href='#'>2</a></li>
+                                                <li><a class='page-numbers' href='#'>3</a></li>
+                                                <li><a class="next page-numbers" href="#">&rsaquo;</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+
+                            <div class="kids_clear"></div>
+                        </div>
+                        <!-- .entry-container -->
+                    </div>
+                    <div class="bg-level-2 second-part"></div>
+                </div>
+                <!-- ***************** - END Image floating - *************** -->
+            </section>
+            <!-- .bottom_content_container -->
+        </div>
+        <div class="content_bottom_bg"></div>
+    </div>
+</div>
+<!-- .end_content -->
+<ng-include src="'./layouts/footer.view.html'"></ng-include>
