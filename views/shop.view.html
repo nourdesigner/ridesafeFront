@@ -100,6 +100,51 @@
             </section>
             <!-- .bottom_content_container -->
         </div>
+        
+         <article class="post-item" ng-repeat="c in commentaires">
+                                    <div class="post-meta">
+                                        <div class="post-date">
+                                            <span class="day">3</span>
+                                            <span class="month">Jan.2015</span>
+                                        </div>
+                                        <!--/ post-date-->
+                                    </div>
+                                    <!--/ post-meta-->
+                                    <div class="post-entry">
+
+                                        <div class="entry">
+                                            <div class="post-title">
+                                                <a href="#">{{c.commentaire}}</a>
+                                            </div>
+                                            <!--/ post-title-->
+                                        </div>
+                                        <!--/ entry-->
+                                    </div>
+                                  
+                                </article>
+        
+        <div class="post-entry">
+
+                                        <div class="entry">
+                                            <div class="post-title">
+                                                <a href="#">Add a comment</a>
+                                            </div>
+                                            <!--/ post-title-->
+                                            <table>
+                                                <tr>
+                                                    <td>Id</td>
+                                                    <td><input type="text" ng-model="comment._id" style="width:100%"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Comment</td>
+                                                    <td><input type="text" ng-model="comment.commentaire" style="width:100%"></td>
+                                                </tr>
+                                              
+                                                <tr><td><button ng-click="addcomment()">Add comment</button></td></tr>
+                                            </table>
+                                        </div>
+                                        <!--/ entry-->
+                                    </div>
         <div class="content_bottom_bg"></div>
     </div>
 </div>
