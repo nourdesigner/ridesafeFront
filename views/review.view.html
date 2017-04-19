@@ -45,6 +45,39 @@
                     <div class="container l-page-width">
                         <div class="entry-container ">
                             <main class="blog">
+                                <article class="post-item">
+
+                                    <!--/ post-meta-->
+                                    <div class="post-entry">
+
+                                        <div class="entry">
+                                            <div class="post-title">
+                                                <a href="#">Add a review</a>
+                                            </div>
+                                            <!--/ post-title-->
+                                            <table>
+                                                <tr>
+                                                    <td>Id</td>
+                                                    <td><input type="text" ng-model="review._id" style="width:100%"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Subject</td>
+                                                    <td><input type="text" ng-model="review.subject" style="width:100%"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Message</td>
+                                                    <td><input type="text" ng-model="review.message" style="width:100%"></td>
+                                                </tr>
+                                                <tr><td><button ng-click="addreview()">Add review</button></td></tr>
+                                            </table>
+                                        </div>
+                                        <!--/ entry-->
+                                    </div>
+                                    <!--/ post-entry -->
+
+                                    <!--/ post-footer-->
+                                </article>
+
                                 <article class="post-item" ng-repeat="report in reporting">
                                     <div class="post-meta">
                                         <div class="post-date">
