@@ -22,6 +22,7 @@ function configFN($routeProvider) {
             controller: "TemoignageController",
             templateUrl: "views/review.view.html"
         })
+        .otherwise({redirectTo:'/home'});
 }
 configFN.$inject = ['$routeProvider'];
 
