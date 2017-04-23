@@ -1,0 +1,13 @@
+<ul id="breadcrumbs" ng-if="currentUser!=0">
+    <li><span class="current_crumb" style="float: right">Login as: <b>{{currentUser}}</b><br><a href="#/historique">Historique</a> - <a ng-click="logout()">Logout</a></span></li>
+</ul>
+<ul id="breadcrumbs" ng-if="currentUser==0">
+    <div class="form-group" style="float: right;padding-top: 5px">
+        <input type="text" placeholder="Pseudo" ng-model="pseudo">
+        <input placeholder="password" type="password" ng-model="password">
+        <input type="button" class="cws_button" value="Login" ng-click="doLogin(pseudo,password)">
+        <input type="button" class="cws_button" value="Sign up"  style="background:#f2a1b0; color:#fff" ng-click="doLogin(pseudo,password)">
+
+    </div>
+
+</ul>

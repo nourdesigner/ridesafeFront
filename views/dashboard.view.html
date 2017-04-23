@@ -1,0 +1,349 @@
+
+<!-- HEADER BEGIN -->
+<div class="top-panel">
+    <div class="l-page-width clearfix">
+        <div class="wrapper">
+            <div class="widget widget_cws_tweets">
+                <div class='cws-widget-content '>
+                    <div class="latest_tweets ">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ .top-panel-->
+<div class="kids-bg-level-1">
+    <div class="bg-level-1"></div>
+    <ng-include src="'./layouts/header.view.html'"></ng-include>
+
+    <!-- HEADER END -->
+</div>
+<!-- .bg-level-1 -->
+<div id="kids_middle_container">
+    <!-- .content -->
+    <div class="kids_top_content">
+        <div class="kids_top_content_middle ">
+            <div class="header_container ">
+                <div class="l-page-width">
+                    <h1 style="float: left;padding-top: 10px;">Dashboard </h1>
+                    <ng-include src="'./layouts/login.view.html'"></ng-include>
+
+                </div>
+            </div>
+        </div>
+        <!-- .kids_top_content_middle -->
+    </div>
+
+    <div class="bg-level-2-full-width-container kids_bottom_content" ng-if="role=='admin'">
+        <div class="bg-level-2-page-width-container no-padding">
+            <section class="kids_bottom_content_container">
+                <!-- ***************** - START Image floating - *************** -->
+                <div class="page-content">
+                    <div class="bg-level-2 first-part"></div>
+                    <div class="container l-page-width">
+                        <div class="entry-container double-sidebar">
+                            <aside id="sidebar-left">
+
+                                <!-- navigation -->
+                                <div id="cws_nav-3" class="widget widget_cws_nav type-2 type-2">
+                                    <h3 class="widget-title">Navigation</h3>
+                                    <div class="widget-content">
+                                        <div class="nav_cat">
+                                            <ul id="nav-71" class="menu">
+                                                <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="#/dashboard/quiz">Quiz</a></li>
+                                                <li class="menu-item"><a href="#/dashboard/shop">Shop</a></li>
+                                                <li class="menu-item"><a href="#/dashboard/shop">Review</a></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- / navigation -->
+                                <!-- latest post -->
+                                <div class="widget widget_cws_latest_posts type-2">
+                                    <div class="latest-posts-widget">
+                                        <h3 class="widget-title">Latest Posts</h3>
+                                        <div class="widget-content">
+                                            <ul>
+                                                <li>
+                                                    <div class="kids_image_wrapper ">
+                                                        <a href="pic/HappyFeet_1st4.jpg" class="prettyPhoto kids_mini_picture" data-rel="prettyPhoto[rpwt]"><img src="pic/70x70-img-1.jpg" width="70" height="70" alt=""></a>
+                                                    </div>
+                                                    <div class="kids_post_content">
+                                                        <h4><a href="#">Image Post</a></h4>Lorem ipsum dolor ...
+                                                        <p></p>
+                                                        <p class="time-post">January 3, 2015</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="kids_image_wrapper ">
+                                                        <a href="pic/LegoMovie_3rd4.jpg" class="prettyPhoto kids_mini_picture" data-rel="prettyPhoto[rpwt]"><img src="pic/70x70-img-2.jpg" width="70" height="70" alt=""></a>
+                                                    </div>
+                                                    <div class="kids_post_content">
+                                                        <h4><a href="#">Image Post</a></h4>Lorem ipsum dolor ...
+                                                        <p></p>
+                                                        <p class="time-post">January 2, 2015</p>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="kids_image_wrapper ">
+                                                        <a href="pic/Tangled_3rd5.jpg" class="prettyPhoto kids_mini_picture" data-rel="prettyPhoto[rpwt]"><img src="pic/70x70-img-3.jpg" width="70" height="70" alt=""></a>
+                                                    </div>
+                                                    <div class="kids_post_content">
+                                                        <h4><a href="#">Video blog post</a></h4>Lorem ipsum dolor ...
+                                                        <p></p>
+                                                        <p class="time-post">January 1, 2015</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- / latest post -->
+                            </aside>
+                            <main>
+                                <div class='grid-row clearfix'>
+                                    <div class='grid-col grid-col-12'>
+                                        <section class='cws-widget'>
+                                            <div class='widget-title'>Welcome {{admin}}</div>
+                                            <section class='cws_widget_content'>
+                                                <p><img class="alignleft border size-medium" src="pic/300x300-img-13.jpg" alt="500x500_1" width="300" height="300" /></p>
+                                                <h2>Lorem ipsum.</h2>
+                                                <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zril delenit augue duis dolore te feugait nulla in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zril delenit augue duis dolore te feugait nulla facilisi.</p>
+                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                                                <p><i>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse. Lorem ipsum dolor sit amet, consectetuer adipising elit, sed diam nonummy nibh euismod tincint ut laoreet dolore magna aliquam erat volutpatt wisi enim ad minim venia, quis nostr.ud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </i></p>
+                                            </section>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div class='grid-row clearfix'>
+                                    <div class='grid-col grid-col-6'>
+                                        <section class='cws-widget'>
+                                            <section class='cws_widget_content'>
+                                                <ul>
+                                                    <li>Donec placerat lectus eu elit lobortis</li>
+                                                    <li>Mauris vestibulum dui metus, quis</li>
+                                                    <li>Fringilla libero gonec eget fusce</li>
+                                                    <li>Donec placerat lectus eu elit lobortis</li>
+                                                    <li>Mauris vestibulum dui metus, quis</li>
+                                                    <li>Fringilla libero gonec eget fusce</li>
+                                                </ul>
+                                            </section>
+                                        </section>
+                                    </div>
+                                    <div class='grid-col grid-col-6'>
+                                        <section class='cws-widget'>
+                                            <section class='cws_widget_content'>
+                                                <ol>
+                                                    <li>Donec placerat lectus eu elit lobortis</li>
+                                                    <li>Mauris vestibulum dui metus, quis</li>
+                                                    <li>Fringilla libero gonec eget fusce</li>
+                                                    <li>Donec placerat lectus eu elit lobortis</li>
+                                                    <li>Mauris vestibulum dui metus, quis</li>
+                                                    <li>Fringilla libero gonec eget fusce</li>
+                                                </ol>
+                                            </section>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div class='grid-row clearfix'>
+                                    <div class='grid-col grid-col-12'>
+                                        <section class='cws-widget'>
+                                            <section class='cws_widget_content'>
+                                                <hr />
+                                            </section>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div class='grid-row clearfix'>
+                                    <div class='grid-col grid-col-12'>
+                                        <section class='cws-widget'>
+                                            <section class='cws_widget_content'>
+                                                <div class="recent_projects ">
+                                                    <h3 class="section-title">Recent Posts</h3>
+                                                    <div class="projects_carousel blog clearfix" data-carousel-column="1">
+                                                        <div class="iso-item">
+                                                            <article class="post-item">
+                                                                <div class="post-meta">
+                                                                    <div class="post-date">
+                                                                        <span class="day"> 3</span>
+                                                                        <span class="month">Jan.2015</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="post-entry">
+                                                                    <div class="content-wrapper alignleft">
+                                                                        <figure>
+                                                                            <a data-rel="prettyPhoto[lt_posts]" class="prettyPhoto kids_picture" title="Image Post" href="pic/HappyFeet_1st4.jpg"><img class="pic" src="pic/185x185-img-1.jpg" alt="" /></a>
+                                                                        </figure>
+                                                                    </div>
+                                                                    <div class="entry">
+                                                                        <div class="post-title">
+                                                                            <a href="#">Image Post</a>
+                                                                        </div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magn aliquam erat volutpat. Ut wisi enim ad minim veniam ...</div>
+                                                                </div>
+                                                                <div class="post-footer">
+																		<span class="l-float-right"><a href="#" class="more-link cws_button">
+					Read more</a></span>
+                                                                    <div class="post_cats">
+                                                                        <p><span>Category:</span><a class="link" href="#" title="View all posts in">Image</a></p>
+                                                                    </div>
+                                                                    <div class="post_tags">
+                                                                        <p><span>Tags:</span>
+                                                                            <a href="#" " title="Tag "" class="link">Blog</a></p>
+                                                                    </div>
+                                                                    <div class="kids_clear"></div>
+                                                                </div>
+                                                            </article>
+                                                        </div>
+                                                        <div class="iso-item">
+                                                            <article class="post-item">
+                                                                <div class="post-meta">
+                                                                    <div class="post-date">
+                                                                        <span class="day"> 2</span>
+                                                                        <span class="month">Jan.2015</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="post-entry">
+                                                                    <div class="content-wrapper alignleft">
+                                                                        <figure>
+                                                                            <a data-rel="prettyPhoto[lt_posts]" class="prettyPhoto kids_picture" title="Image Post" href="pic/LegoMovie_3rd4.jpg"><img class="pic" src="pic/185x185-img-2.jpg" alt="" /></a>
+                                                                        </figure>
+                                                                    </div>
+                                                                    <div class="entry">
+                                                                        <div class="post-title">
+                                                                            <a href="#">Image Post</a>
+                                                                        </div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magn aliquam erat volutpat. Ut wisi enim ad minim veniam ...</div>
+                                                                </div>
+                                                                <div class="post-footer">
+																		<span class="l-float-right"><a href="#" class="more-link cws_button">
+					Read more</a></span>
+                                                                    <div class="post_cats">
+                                                                        <p><span>Category:</span><a class="link" href="#" title="View all posts in">Image</a></p>
+                                                                    </div>
+                                                                    <div class="post_tags">
+                                                                        <p><span>Tags:</span>
+                                                                            <a href="#" " title="Tag "" class="link">Blog</a></p>
+                                                                    </div>
+                                                                    <div class="kids_clear"></div>
+                                                                </div>
+                                                            </article>
+                                                        </div>
+                                                        <div class="iso-item">
+                                                            <article class="post-item">
+                                                                <div class="post-meta">
+                                                                    <div class="post-date">
+                                                                        <span class="day"> 1</span>
+                                                                        <span class="month">Jan.2015</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="post-entry">
+                                                                    <div class="content-wrapper alignleft">
+                                                                        <figure>
+                                                                            <a data-rel="prettyPhoto[lt_posts]" class="prettyPhoto kids_picture" title="Video blog post" href="pic/Tangled_3rd5.jpg"><img class="pic" src="pic/185x185-img-3.jpg" alt="" /></a>
+                                                                        </figure>
+                                                                    </div>
+                                                                    <div class="entry">
+                                                                        <div class="post-title">
+                                                                            <a href="#">Video blog post</a>
+                                                                        </div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magn aliquam erat volutpat. Ut wisi enim ad minim veniam ...</div>
+                                                                </div>
+                                                                <div class="post-footer">
+																		<span class="l-float-right"><a href="#" class="more-link cws_button">
+					Read more</a></span>
+                                                                    <div class="post_cats">
+                                                                        <p><span>Category:</span><a class="link" href="#" title="View all posts in">Image</a>, <a class="link" href="#" title="View all posts in">test</a>, <a class="link" href="#" title="View all posts in">Video</a></p>
+                                                                    </div>
+                                                                    <div class="post_tags">
+                                                                        <p><span>Tags:</span>
+                                                                            <a href="#" " title="Tag "" class="link">Blog</a>, <a href="#" " title="Tag "" class="link">Post</a></p>
+                                                                    </div>
+                                                                    <div class="kids_clear"></div>
+                                                                </div>
+                                                            </article>
+                                                        </div>
+                                                    </div>
+                                                    <!--/ .projects-carousel -->
+                                                </div>
+                                                <!--/ .work-carousel-->
+                                                <hr />
+                                            </section>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div class='grid-row clearfix'>
+                                    <div class='grid-col grid-col-12'>
+                                        <section class='cws-widget'>
+                                            <div class='widget-title'>What we do</div>
+                                            <section class='cws_widget_content'>
+                                                <h2>Lorem ipsum dolor sit amet, consectetuer adipising</h2>
+                                                <p>In ac sollicitudin sem. Proin congue blandit eros, eu volutpat leo maximus vitae. Nulla a velit ut augue pretium fringilla. In hac habitasse platea dictumst. Sed vitae sodales purus. Cras ultrices condimentum lectus, nec laoreet sapien tempus vel. Duis pretium ante purus, et faucibus turpis pellentesque eget. Curabitur ac blandit dolor. Maecenas facilisis eleifend massa ac commodo. Integer justo felis, finibus at faucibus eget, pulvinar a odio. Suspendisse potenti. Curabitur auctor tristique arcu et dapibus. Praesent risus metus, ultricies ac ante interdum, fringilla finibus est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames </section>
+                                        </section>
+                                        <section class='cws-widget'>
+                                            <section class='cws_widget_content accordion_widget'>
+                                                <div class='accordion_section active'>
+                                                    <div class='accordion_title'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nibh nibh, suscipit vel fringilla vitae, fermentum vel sem.<i class='accordion_icon'></i></div>
+                                                    <div class='accordion_content'>Phasellus egestas nulla urna, nec interdum nibh pretium vitae. Nulla tincidunt neque nisl, sit amet semper felis imperdiet et. Sed placerat fermentum fringilla. Morbi nec purus vel nulla varius aliquet. Sed consectetur ipsum nulla, at lacinia diam dapibus nec. Phasellus eleifend, magna dictum efficitur placerat, ligula nisl porttitor turpis, a fermentum nisi lorem ac nulla. Integer sollicitudin ex at sapien congue pellentesque.</div>
+                                                </div>
+                                                <div class='accordion_section'>
+                                                    <div class='accordion_title'>Morbi nec purus vel nulla varius aliquet sed consectetur ipsum nulla<i class='accordion_icon'></i></div>
+                                                    <div class='accordion_content' style='display: none;'>Phasellus eleifend, magna dictum efficitur placerat, ligula nisl porttitor turpis, a fermentum nisi lorem ac nulla. Integer sollicitudin ex at sapien congue pellentesque. Phasellus egestas nulla urna, nec interdum nibh pretium vitae. Nulla tincidunt neque nisl, sit amet semper felis imperdiet et. Sed placerat fermentum fringilla. Morbi nec purus vel nulla varius aliquet. Sed consectetur ipsum nulla, at lacinia diam dapibus nec.</div>
+                                                </div>
+                                                <div class='accordion_section'>
+                                                    <div class='accordion_title'>Integer sollicitudin ex at sapien congue pellentesque.<i class='accordion_icon'></i></div>
+                                                    <div class='accordion_content' style='display: none;'>Phasellus eleifend, magna dictum efficitur placerat, ligula nisl porttitor turpis, a fermentum nisi lorem ac nulla. Integer sollicitudin ex at sapien congue pellentesque. Phasellus egestas nulla urna, nec interdum nibh pretium vitae. Nulla tincidunt neque nisl, sit amet semper felis imperdiet et. Sed placerat fermentum fringilla. Morbi nec purus vel nulla varius aliquet. Sed consectetur ipsum nulla, at lacinia diam dapibus nec.</div>
+                                                </div>
+                                                <div class='accordion_section'>
+                                                    <div class='accordion_title'>Phasellus egestas nulla urna, nec interdum nibh pretium vitae.<i class='accordion_icon'></i></div>
+                                                    <div class='accordion_content' style='display: none;'>Phasellus eleifend, magna dictum efficitur placerat, ligula nisl porttitor turpis, a fermentum nisi lorem ac nulla. Integer sollicitudin ex at sapien congue pellentesque. Phasellus egestas nulla urna, nec interdum nibh pretium vitae. Nulla tincidunt neque nisl, sit amet semper felis imperdiet et. Sed placerat fermentum fringilla. Morbi nec purus vel nulla varius aliquet. Sed consectetur ipsum nulla, at lacinia diam dapibus nec.</div>
+                                                </div>
+                                                <div class='accordion_section'>
+                                                    <div class='accordion_title'>Phasellus egestas nulla urna, nec interdum nibh pretium vitae.<i class='accordion_icon'></i></div>
+                                                    <div class='accordion_content' style='display: none;'>Phasellus eleifend, magna dictum efficitur placerat, ligula nisl porttitor turpis, a fermentum nisi lorem ac nulla. Integer sollicitudin ex at sapien congue pellentesque. Phasellus egestas nulla urna, nec interdum nibh pretium vitae. Nulla tincidunt neque nisl, sit amet semper felis imperdiet et. Sed placerat fermentum fringilla. Morbi nec purus vel nulla varius aliquet. Sed consectetur ipsum nulla, at lacinia diam dapibus nec.</div>
+                                                </div>
+                                            </section>
+                                        </section>
+                                    </div>
+                                </div>
+                                <!-- comments block -->
+                                <!-- //end comments block -->
+                            </main>
+                            <aside id="sidebar-right">
+                                <!-- flickr -->
+                                <div id="cws_flickr-6" class="widget widget_cws_flickr">
+                                    <div class="flickr widget_flickr_feed">
+                                        <h3 class="widget-title">Flickr Feed</h3>
+                                        <ul id="flickr-badge-52" class="flickr-badge clearfix"></ul>
+                                    </div>
+                                </div>
+                                <!-- / flickr -->
+                                <!-- twitter -->
+                                <div id="cws_tweets-8" class="widget widget_cws_tweets">
+                                    <div class='cws-widget-content '>
+                                        <div class='carousel_header clearfix'>
+                                            <div class='widget_carousel_nav'><i class='prev fa fa-angle-left'></i><i class='next fa fa-angle-right'></i></div>
+                                            <h3 class="widget-title">Twitter</h3>
+                                        </div>
+                                        <div class='carousel_content cws_tweets'>
+                                            <div class="twitter-carousel carousel latest_tweets"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- / twitter -->
+                            </aside>
+                            <div class="kids_clear"></div>
+                        </div>
+                        <!-- .entry-container -->
+                    </div>
+                    <div class="bg-level-2 second-part"></div>
+                </div>
+                <!-- ***************** - END Image floating - *************** -->
+            </section>
+            <!-- .bottom_content_container -->
+        </div>
+        <div class="content_bottom_bg"></div>
+    </div>
+</div>
+<!-- .end_content -->
+<ng-include src="'./layouts/footer.view.html'"></ng-include>

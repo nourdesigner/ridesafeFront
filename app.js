@@ -22,8 +22,27 @@ function configFN($routeProvider) {
             controller: "TemoignageController",
             templateUrl: "views/review.view.html"
         })
+        .when('/addQuiz', {
+            controller: "PlayController",
+            templateUrl: "views/addQuiz.view.html"
+        })
+        .when('/historique', {
+            controller: "HistoriqueController",
+            templateUrl: "views/historique.view.html"
+        })
+        .when('/dashboard', {
+            controller: "DashboardController",
+            templateUrl: "views/dashboard.view.html"
+        })
+        .when('/login',{
+            controller:"LoginController",
+            templateUrl:"views/loginpage.view.html"
+        })
         .otherwise({redirectTo:'/home'});
 }
 configFN.$inject = ['$routeProvider'];
-
-angular.module("demo").config(configFN);
+function runFN($rootScope){
+    localStorage.users=([
+        {pseudo:"wemtek",password:"wemtek"}]);
+}
+angular.module("demo").config(configFN).run(runFN);
