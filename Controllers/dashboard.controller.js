@@ -1,5 +1,4 @@
 function DashboardControllerFN($scope,$http,$location) {
-    $scope.admin="Welcome Admin";
     $scope.currentUser="0";
     $scope.pseudo="";
     $scope.password="";
