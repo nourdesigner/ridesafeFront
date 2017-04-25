@@ -18,6 +18,8 @@ function HistoriqueControllerFN($scope,$http) {
             if (reponse.data.length!=0){
                 localStorage.setItem("currentUser", login);
                 $scope.currentUser=localStorage.getItem("currentUser");
+                localStorage.setItem("role", reponse.data.role);
+                $scope.role=localStorage.getItem("role");
                 console.log($scope.currentUser);
             }else {
                 alert('Failed to connect ');

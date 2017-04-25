@@ -4,6 +4,7 @@ function LoginControllerFN($scope,$http,$location) {
     $scope.password="";
     var currentUser = localStorage.getItem("currentUser");
     $scope.role=localStorage.getItem("role");
+    console.log("+++++++++"+$scope.role);
     if($scope.role=="admin"){
         $location.path('/dashboard');
     }
@@ -21,6 +22,8 @@ function LoginControllerFN($scope,$http,$location) {
             if (reponse.data.length!=0){
                 localStorage.setItem("currentUser", login);
                 $scope.currentUser=localStorage.getItem("currentUser");
+                localStorage.setItem("role", reponse.data.role);
+                $scope.role=localStorage.getItem("role");
                 if(reponse.data.role=="admin"){
                     $location.path('/dashboard');
                 }

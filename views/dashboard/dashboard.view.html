@@ -26,12 +26,8 @@
         <div class="kids_top_content_middle ">
             <div class="header_container ">
                 <div class="l-page-width">
-                    <h1>Login</h1>
-                    <ul id="breadcrumbs">
-                        <li><a  title="Home">Home</a></li>
-                        <span class="delimiter">&gt;</span>
-                        <li><span class="current_crumb">Login</span></li>
-                    </ul>
+                    <h1 style="float: left;padding-top: 10px;">Dashboard</h1>
+                    <ng-include src="'./layouts/login.view.html'"></ng-include>
                 </div>
             </div>
         </div>
@@ -46,7 +42,7 @@
                     <div class="container l-page-width">
 
 
-                        <div class='grid-row clearfix' style='margin-top:0px;' ng-hide="isBack">
+                        <div class='grid-row clearfix' style='margin-top:0px;' ng-hide="isBack" ng-if="role=='admin'">
                             <div class='grid-col grid-col-12'>
                                 <section class='cws-widget'>
                                     <section class='cws_widget_content'>
