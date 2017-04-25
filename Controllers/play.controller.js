@@ -55,6 +55,8 @@ function PlayControllerFN($scope,$http) {
     $scope.logout=function () {
         localStorage.removeItem("currentUser", "Wemtek");
         localStorage.setItem("currentUser", "0");
+        localStorage.removeItem("role", "admin");
+        localStorage.setItem("role", "0");
         $scope.currentUser=localStorage.getItem("currentUser");
         console.log(localStorage.getItem("currentUser"));
     }

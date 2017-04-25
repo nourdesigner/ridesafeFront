@@ -1,0 +1,222 @@
+
+<!-- HEADER BEGIN -->
+<div class="top-panel">
+    <div class="l-page-width clearfix">
+        <div class="wrapper">
+            <div class="widget widget_cws_tweets">
+                <div class='cws-widget-content '>
+                    <div class="latest_tweets ">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ .top-panel-->
+<div class="kids-bg-level-1">
+    <div class="bg-level-1"></div>
+    <ng-include src="'./layouts/header.view.html'"></ng-include>
+    <!-- HEADER END -->
+</div>
+<!-- .bg-level-1 -->
+<div id="kids_middle_container">
+    <!-- .content -->
+    <div class="kids_top_content">
+        <div class="kids_top_content_middle ">
+            <div class="header_container ">
+                <div class="l-page-width">
+                    <h1>Login</h1>
+                    <ul id="breadcrumbs">
+                        <li><a  title="Home">Home</a></li>
+                        <span class="delimiter">&gt;</span>
+                        <li><span class="current_crumb">Login</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- .kids_top_content_middle -->
+    </div>
+    <div class="bg-level-2-full-width-container kids_bottom_content">
+        <div class="bg-level-2-page-width-container no-padding">
+            <section class="kids_bottom_content_container">
+                <!-- ***************** - START Image floating - *************** -->
+                <div class="page-content">
+                    <div class="bg-level-2 first-part"></div>
+                    <div class="container l-page-width">
+
+
+                        <div class='grid-row clearfix' style='margin-top:0px;' ng-hide="isBack">
+                            <div class='grid-col grid-col-12'>
+                                <section class='cws-widget'>
+                                    <section class='cws_widget_content'>
+                                        <div class="cws-widget callout_widget clearfix ">
+                                            <div class='content_wrapper'>
+                                                <div class="cws_widget_content tab_widget">
+                                                    <div class="tabs">
+                                                        <a class="tab active" role="tab" tabindex="0">Quiz</a><!--
+                                                         --><a class="tab" role="tab" tabindex="1">Shop</a><!--
+                                                         --><a class="tab" role="tab" tabindex="2">Review</a>
+                                                    </div>
+                                                    <div class="tab_items">
+                                                        <div class="tab_item" role="tabpanel" tabindex="0" style="display: block;">
+
+
+                                                                <div class="grid-row clearfix" style="margin-top:0px;">
+                                                                    <div class="grid-col grid-col-12">
+                                                                        <section class="cws-widget">
+                                                                            <section class="cws_widget_content">
+                                                                                <div class="cws-widget callout_widget clearfix ">
+                                                                                    <div class="content_wrapper">
+                                                                                        <div class="text_part">
+                                                                                            <div class="title"><input placeholder="type question..." ng-model="searchingByName" style="width: 100%"></div>
+
+                                                                                        </div>
+                                                                                        <div class="button_part">
+                                                                                            <a class="cws_button large square custom_color" style="background:#8ddd67; color:#fff;" ng-click="isBack=true;quizAction=false">Add new quiz</a></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </section>
+                                                                        </section>
+                                                                    </div>
+                                                                </div><br>
+
+                                                            <div ng-repeat="quiz in quizs | filter:searchingByName">
+                                                            <div class="grid-row clearfix" style="margin-top:0px;">
+                                                                <div class="grid-col grid-col-12">
+                                                                    <section class="cws-widget">
+                                                                        <section class="cws_widget_content">
+                                                                            <div class="cws-widget callout_widget clearfix ">
+                                                                                <div class="content_wrapper">
+                                                                                    <div class="text_part">
+                                                                                        <div class="title">{{quiz.Question}}</div>
+                                                                                        <div ng-if="quiz.Reponse=='A'">
+                                                                                            <input type="radio" checked disabled>{{quiz.Reponses[0]}}<br>
+                                                                                            <input type="radio" disabled>{{quiz.Reponses[1]}}<br>
+                                                                                            <input type="radio" disabled>{{quiz.Reponses[2]}}
+                                                                                        </div>
+
+                                                                                        <div ng-if="quiz.Reponse=='B'">
+                                                                                            <input type="radio" disabled>{{quiz.Reponses[0]}}<br>
+                                                                                            <input type="radio" checked disabled>{{quiz.Reponses[1]}}<br>
+                                                                                            <input type="radio"  disabled>{{quiz.Reponses[2]}}
+                                                                                        </div>
+
+                                                                                        <div ng-if="quiz.Reponse=='C'">
+                                                                                            <input type="radio" disabled>{{quiz.Reponses[0]}}<br>
+                                                                                            <input type="radio" disabled>{{quiz.Reponses[1]}}<br>
+                                                                                            <input type="radio" checked disabled>{{quiz.Reponses[2]}}
+                                                                                        </div>
+                                                                                        <br>
+                                                                                        <p>Tag : <b>#{{quiz.tags}}</b></p>
+                                                                                    </div>
+                                                                                    <div class="button_part">
+                                                                                        <a class="cws_button large" ng-click="updateQuiz(quiz._id)">Update</a><a class="cws_button large custom_color" style="background:#ffdb5e; color:#fff" ng-confirm-click="Are you sure to delete this record ?" confirmed-click="removeQuiz(quiz._id)">Delete</a></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </section>
+                                                                    </section>
+                                                                </div>
+                                                            </div><br>
+                                                            </div>
+
+
+                                                        </div>
+
+
+                                                        <div class="tab_item" role="tabpanel" tabindex="1" style="display: none;">
+                                                            <p>Morbi non risus massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tellus ante, auctor eget hendrerit porttitor. Mollis condimentum ligula. Nulla aliquet, est nec rutrum pharetra.&nbsp;Phasellus egestas nulla urna, nec interdum nibh pretium vitae. Nulla tincidunt neque nisl, sit amet semper felis imperdiet et. Sed placerat fermentum fringilla. Morbi nec purus vel nulla varius aliquet. Sed consectetur ipsum nulla, at lacinia diam dapibus nec. Phasellus eleifend, magna dictum efficitur placerat, ligula nisl porttitor turpis, a fermentum nisi lorem ac nulla. Integer sollicitudin ex at sapien congue pellentesque.</p>
+                                                        </div>
+
+
+                                                        <div class="tab_item" role="tabpanel" tabindex="2" style="display: none;">
+                                                            <p>Cras cursus tempor leo, at egestas lacus imperdiet non. Etiam a dignissim nisl. Duis vehicula dapibus elit. Sed commodo vulputate pretium. Fusce in magna aliquam arcu gravida laoreet ac et turpis.&nbsp;Phasellus egestas nulla urna, nec interdum nibh pretium vitae. Nulla tincidunt neque nisl, sit amet semper felis imperdiet et. Sed placerat fermentum fringilla. Morbi nec purus vel nulla varius aliquet. Sed consectetur ipsum nulla, at lacinia diam dapibus nec. Phasellus eleifend, magna dictum efficitur placerat, ligula nisl porttitor turpis, a fermentum nisi lorem ac nulla. Integer sollicitudin ex at sapien congue pellentesque.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                            </div>
+            </section>
+            </section>
+        </div>
+    </div>
+                        <div class="message_box alert-box  close" ng-show="doError"><span class="close-box"></span>
+                            <div class="message_box_header">Error !</div>
+                            <p>Please fill in all the required fields.</p>
+                        </div><br>
+                        <div class="message_box success-box  close" ng-show="deleted"><span class="close-box"></span>
+                            <div class="message_box_header">Success</div>
+                            <p>Quiz has been deleted</p>
+                        </div><br>
+                        <!-- add quiz block -->
+                        <div class="grid-col grid-col-12" style="background: blanchedalmond;" ng-show="isBack">
+                            <section class="cws-widget">
+                                <section class="cws_widget_content">
+                                    <div class="cws-widget callout_widget clearfix">
+                                        <table>
+                                            <tr>
+                                                <td>Question</td>
+                                                <td><input type="text" ng-model="quiz.Question" style="width:100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Choix</td>
+                                                <td>
+                                                    <input type="text" ng-model="quiz.Reponses[0]" style="width:100%">
+                                                    <input type="text" ng-model="quiz.Reponses[1]" style="width:100%">
+                                                    <input type="text" ng-model="quiz.Reponses[2]" style="width:100%">
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Reponse</td>
+                                                <td>
+                                                    <select style="width:100%" ng-model="quiz.Reponse">
+                                                    <option value="A">A</option>
+                                                    <option value="B">B</option>
+                                                    <option value="C">C</option>
+                                                </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tag</td>
+                                                <td><input type="text" ng-model="quiz.tags" style="width:100%"></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </section>
+                            </section>
+                            <div class="post-footer">
+                                <p ng-click="isBack=false" class="more-link cws_button l-float-right">Back</p>
+                                <p ng-click="resetAction()" class="more-link cws_button l-float-right" style="margin-right: 20px">Reset</p>
+
+                                <p ng-click="addQuiz()" class="more-link cws_button l-float-right" ng-if="!quizAction" style="margin-right: 20px">Add Quiz {{doUpdate}}</p>
+                                <p ng-click="doUpdateQuiz(quiz._id)" class="more-link cws_button l-float-right"ng-if="quizAction" style="margin-right: 20px">Update Quiz</p>
+
+                                <!--/ post-cats -->
+                                <div class="post_tags">
+                                </div>
+                                <!--/ post-tags -->
+                                <div class="kids_clear"></div>
+                            </div>
+                        </div>
+
+
+
+    <!-- comments block -->
+    <!-- //end comments block -->
+    </main>
+    <div class="kids_clear"></div>
+</div>
+<!-- .entry-container -->
+</div>
+<div class="bg-level-2 second-part"></div>
+</div>
+<!-- ***************** - END Image floating - *************** -->
+</section>
+<!-- .bottom_content_container -->
+</div>
+<div class="content_bottom_bg"></div>
+</div>
+</div>
+<!-- .end_content -->
+<ng-include src="'./layouts/footer.view.html'"></ng-include>

@@ -1,13 +1,19 @@
 angular.module('demo').filter('quesByID',['$http', function($http) {
+var x = "";
     return function(input) {
-        var output="";
 
-        $http.get("http://localhost:3003/api/quiz/"+input).then(function(reponse){
-            console.log(reponse.data[0].Question);
-             output = "done";
+    return  $http.get("http://localhost:3003/api/quiz/"+input).then(function(reponse){
+            console.log(reponse.data[0]);
+            x=reponse.data[0].Question;
         });
-        console.log(output);
-        return output;
+        console.log(x);
+
+       // return output;
 
     }
 }]);
+
+/*
+ ,
+
+ */

@@ -30,14 +30,17 @@ function configFN($routeProvider) {
             controller: "HistoriqueController",
             templateUrl: "views/historique.view.html"
         })
-        .when('/dashboard', {
-            controller: "DashboardController",
-            templateUrl: "views/dashboard.view.html"
-        })
         .when('/login',{
             controller:"LoginController",
             templateUrl:"views/loginpage.view.html"
         })
+        /* ******* Dashboard routes ******* */
+        .when('/dashboard', {
+            controller: "DashboardController",
+            templateUrl: "views/dashboard/dashboard.view.html"
+        })
+
+
         .otherwise({redirectTo:'/home'});
 }
 configFN.$inject = ['$routeProvider'];
