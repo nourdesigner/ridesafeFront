@@ -1,5 +1,9 @@
-function TemoignageControllerFN($scope,$http) {
-
+function TemoignageControllerFN($scope,$http,CartService,$timeout) {
+    $scope.$watch('viewContentLoaded',function(){
+        $timeout(function() {
+            CartService.updateNumItems();
+        },0);
+    });
     $scope.reporting=[];
     $http.get("http://localhost:3003/api/reporting").then(function(reponse){
         $scope.reporting=reponse.data;

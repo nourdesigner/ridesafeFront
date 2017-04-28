@@ -27,9 +27,9 @@
         <div class="kids_top_content_middle ">
             <div class="header_container ">
                 <div class="l-page-width">
-                    <h1> Shop </h1>
+                    <h1> Cart </h1>
                     <ul id="breadcrumbs">
-                        <nav class="woocommerce-breadcrumb"><a href="index-2.html">Home</a> > <a href="shop.html">Shop</a> > Page 1</nav>
+                        <nav class="woocommerce-breadcrumb"><a href="#/home">Home</a> > <a href="#/cart">Cart</a></nav>
                     </ul>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                                             <input type="hidden" name="paged" value="1" />
                                         </form>
                                         <ul class="products">
-                                            <li class="first product has-post-thumbnail" ng-repeat="p in products">
+                                            <li class="first product has-post-thumbnail" ng-repeat="p in cart">
                                                 <div class="sale-wrapper"></div>
                                                 <div class="content-wrapper">
                                                     <figure>
@@ -71,10 +71,10 @@
                                                     </figure>
                                                 </div>
                                                 <a href="shop-single-item.html">
-                                                    <div class="title">{{p.productName}}</div>
+                                                    <div class="title">{{p.productName}} ({{p.qty}})</div>
                                                 </a>
                                                 <span class="price"><span class="amount">{{p.price}} €</span></span>
-                                                <a ng-click="addToCart(p)" rel="nofollow" class="button add_to_cart_button product_type_simple">Add to cart</a>
+                                                <a ng-click="removeFromCart(p)" rel="nofollow" class="button add_to_cart_button product_type_simple">Remove to cart</a>
                                             </li>
 
                                         </ul>
@@ -85,6 +85,19 @@
                                                 <li><a class='page-numbers' href='#'>3</a></li>
                                                 <li><a class="next page-numbers" href="#">&rsaquo;</a></li>
                                             </ul>
+                                        </div>
+                                    </div>
+                                    <div class="cart_totals ">
+                                        <h2>Cart Totals</h2>
+                                        <table cellspacing="0">
+                                            <tbody>
+                                            <tr class="order-total">
+                                                <th>Total</th>
+                                                <td><strong><span class="amount">{{total}}</span></strong> </td>
+                                            </tr>
+                                            </tbody></table>
+                                        <div class="wc-proceed-to-checkout">
+                                            <a ng-click="checkout()" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +113,7 @@
             </section>
             <!-- .bottom_content_container -->
         </div>
-        
+
          <article class="post-item" ng-repeat="c in commentaires">
                                     <div class="post-meta">
                                         <div class="post-date">

@@ -22,6 +22,10 @@ function configFN($routeProvider) {
             controller: "TemoignageController",
             templateUrl: "views/review.view.html"
         })
+        .when('/cart', {
+            controller: "CartController",
+            templateUrl: "views/cart.view.html"
+        })
 }
 configFN.$inject = ['$routeProvider'];
 

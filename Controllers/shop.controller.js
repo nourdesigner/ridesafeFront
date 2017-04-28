@@ -1,10 +1,17 @@
-function ShopControllerFN($scope,$http) {
+function ShopControllerFN($scope,$http,CartService,$timeout) {
+
+    $scope.$watch('viewContentLoaded',function(){
+        $timeout(function() {
+            CartService.updateNumItems();
+        },0);
+    });
     $scope.showmean=true;
     $scope.products=[];
     $scope.commentaires=[];
     $http.get("http://localhost:3003/api/produit").then(function(reponse){
         $scope.products=reponse.data;
-        console.log($scope.products[0]);
+    },function(reponse){
+        $scope.products=reponse.data;
     })
       $http.get("http://localhost:3003/api/commentaire").then(function(reponse){
             $scope.commentaires=reponse.data;
@@ -28,8 +35,13 @@ function ShopControllerFN($scope,$http) {
         });
         $location.path('/');
     };
-    
-    
+
+
+
+    $scope.addToCart=function(item){
+        CartService.add(item);
+    }
+
 }
 
 angular
