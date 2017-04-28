@@ -18,8 +18,8 @@ function HistoriqueControllerFN($scope,$http,$location) {
     if(localStorage.getItem("role")=='parent'){
         $http.get("http://localhost:3003/user/name/"+currentUser).then(function(reponse){
             console.log("kidsssssssssssssssssssssssss");
-            console.log(reponse.data.kids[0]);
-            $scope.kids=reponse.data.kids[0];
+            console.log(reponse.data.kids);
+            $scope.kids=reponse.data.kids;
         })
     }
     $scope.showHistory=function (username) {
@@ -38,7 +38,7 @@ function HistoriqueControllerFN($scope,$http,$location) {
     if(currentUser!=undefined){
         $scope.currentUser=currentUser;
     }
-
+$scope.role=localStorage.getItem("role");
     $scope.doLogin=function (login,password) {
         $http.get("http://localhost:3003/user/"+login+"/"+password).then(function(response){
             if (response.length!=0){
@@ -55,13 +55,14 @@ function HistoriqueControllerFN($scope,$http,$location) {
         })
 
     }
-
+    console.log($scope.role);
     $scope.logout=function () {
         localStorage.removeItem("currentUser", localStorage.getItem("currentUser"));
         localStorage.setItem("currentUser", "0");
 
         localStorage.removeItem("role", localStorage.getItem("role"));
         localStorage.setItem("role", "0");
+        $scope.role=localStorage.getItem("role");
 
         localStorage.removeItem("kids", localStorage.getItem("kids"));
         localStorage.setItem("kids", "0");

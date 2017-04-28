@@ -42,6 +42,12 @@
                     <div class="container l-page-width">
                         <div class="entry-container ">
                             <main class="blog">
+                                <div class="ng-scope" ng-show="newhighscore">
+                                    <div class="message_box success-box ">
+                                        <div class="message_box_header ng-binding">Congratulation {{$scope.kid}}</div>
+                                        <p>Vouz avez <b class="ng-binding">New highscore </p>
+                                    </div><br>
+                                </div>
                                 <article class="post-item">
 
                                     <div ng-hide="position!=0">
@@ -51,23 +57,31 @@
                                         <div class="post-entry">
 
                                             <div class="entry">
-                                                <div class="post-title">
-                                                    <a ng-click="startQuiz('normal',niveau)">Commencer le quiz </a><br>
-                                                    <a ng-click="startQuiz('blind',niveau)">Commencer une session pour les aveugles</a>
+                                                <div>
+                                                    <div class="message_box alert-box" ng-show="connected">
+                                                        <div class="message_box_header">Authentification </div>
+                                                        <p>You need to connect before start playing ! </p>
+                                                    </div><br>
                                                 </div>
                                                 <!-- Niveau -->
+                                                <div ng-if="niveau=='0'">
+                                                    <div ng-click="connectPlease()" id="lockedquiz" ><p>1</p><p class="type">Quiz</p></div>
+                                                    <div ng-click="connectPlease()" id="lockedquiz" ><p>2</p><p class="type">Quiz</p></div>
+                                                    <div ng-click="connectPlease()" id="lockedquiz" ><p>3</p><p class="type">Quiz</p></div>
+                                                    <div ng-click="connectPlease()" id="lockedquiz"><p>4</p><p class="type">3D</p></div>
+                                                    <div ng-click="connectPlease()" id="lockedquiz"><p>5</p><p class="type">3D</p></div>
+                                                </div>
                                                 <div ng-if="niveau=='1'">
-                                                <div ng-click="startQuiz('normal',niveau)" id="openquiz" ><p>1</p><p class="type">Quiz</p></div>
-                                                <div id="unlockedquiz" ><p>2</p><p class="type">Quiz</p></div>
+                                                <div id="openquiz" ><p>1</p><p class="type">Quiz</p></div>
+                                                <div id="unlockedquiz"  ng-click="startQuiz('normal',niveau)" ><p>2</p><p class="type">Quiz</p></div>
                                                 <div id="lockedquiz" ><p>3</p><p class="type">Quiz</p></div>
                                                 <div id="lockedquiz"><p>4</p><p class="type">3D</p></div>
                                                 <div id="lockedquiz"><p>5</p><p class="type">3D</p></div>
                                                 </div>
-
                                                 <div ng-if="niveau=='2'">
                                                     <div id="openquiz" ><p>1</p><p class="type">Quiz</p></div>
                                                     <div id="openquiz" ><p>2</p><p class="type">Quiz</p></div>
-                                                    <div id="unlockedquiz" ><p>3</p><p class="type">Quiz</p></div>
+                                                    <div id="unlockedquiz" ng-click="startQuiz('normal',niveau)" ><p>3</p><p class="type">Quiz</p></div>
                                                     <div id="lockedquiz"><p>4</p><p class="type">3D</p></div>
                                                     <div id="lockedquiz"><p>5</p><p class="type">3D</p></div>
 
@@ -76,7 +90,7 @@
                                                     <div id="openquiz" ><p>1</p><p class="type">Quiz</p></div>
                                                     <div id="openquiz" ><p>2</p><p class="type">Quiz</p></div>
                                                     <div id="openquiz" ><p>3</p><p class="type">Quiz</p></div>
-                                                    <div id="unlockedquiz"><p>4</p><p class="type">3D</p></div>
+                                                    <div id="unlockedquiz"  ng-click="start3d()" ><p>4</p><p class="type">3D</p></div>
                                                     <div id="lockedquiz"><p>5</p><p class="type">3D</p></div>
 
                                                 </div>
@@ -102,7 +116,9 @@
                                             </div>
                                             <!--/ entry-->
                                         </div>
-
+                                        <div class="post-footer">
+                                            <a ng-click="startQuiz('blind',niveau)">Click to start a blind session</a>
+                                        </div>
                                     </div>
 
                                     <div ng-hide="position==length || position==0">
@@ -117,6 +133,7 @@
                                     <div class="post-entry">
 
                                         <div class="entry">
+
                                             <div class="post-title">
                                                 <a>{{question.Question}}</a>
                                             </div>
@@ -129,11 +146,14 @@
 
 
                                         </div>
+
                                         <!--/ entry-->
                                     </div>
+
+
                                     <!--/ post-entry -->
                                     <div class="post-footer">
-                                        <span ng-click="getQuestion()" class="more-link cws_button l-float-right">Question suivante</span>                                        <div class="post_cats">
+                                        <span ng-click="getQuestion()" class="more-link cws_button l-float-right">Next question</span>                                        <div class="post_cats">
                                         </div>
                                         <!--/ post-cats -->
                                         <div class="post_tags">
@@ -145,7 +165,8 @@
                                     </div>
                                     </div>
 
-                                    <div ng-show="position==length">
+
+                                    <div ng-show="position==length && length!='0'">
 
                                         <!--/ post-meta-->
                                         <div class="post-entry">
@@ -153,7 +174,6 @@
                                             <div class="entry">
                                                 <div class="post-title">
                                                     <a>You had {{score}} / {{length}} correct answer</a><br>
-                                                    <a>Congratulation new high score  {{kid}} !! : new score {{score}}</a>
                                                 </div><br>
                                                 <div  ng-repeat="r in result">
                                                     <div ng-if="r.correct/r.size>0.9">

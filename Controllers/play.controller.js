@@ -14,8 +14,8 @@ function PlayControllerFN($scope,$http) {
     $scope.result=[];
     $scope.user=[];
     $scope.kid="";
-    //rafed
-    //khayou_
+    $scope.newhighscore=false;
+    $scope.connected=false;
     var pos=0;
     var len=0;
     var kidPosition=0;
@@ -33,7 +33,10 @@ function PlayControllerFN($scope,$http) {
      if(currentUser!=undefined){
         $scope.currentUser=currentUser;
      }
+    $scope.connectPlease=function () {
+        $scope.connected=true;
 
+    }
     $scope.random = function() {
         return 0.5 - Math.random();
     }
@@ -59,7 +62,15 @@ function PlayControllerFN($scope,$http) {
          }*/
 
     }
+    $scope.start3d=function (level) {
+         if (level=='1'){
+             $location.path('/play3d');
 
+         }else
+         {
+             $location.path('/play3d2');
+         }
+    }
     $http.get("http://localhost:3003/api/quiz/niveau/"+$scope.niveau).then(function(reponse){
         $scope.questions=reponse.data;
         $scope.length=$scope.questions.length;
@@ -97,9 +108,10 @@ function PlayControllerFN($scope,$http) {
         var parents=reponse;
         localStorage.setItem("parentId",parents._id);
         kids=parents.kids;
-        console.log(kids);
-        for(i=0;i<kids[0].length;i++){
-            if(kids[0][i].username==$scope.kid){
+        console.log(kids.length);
+        for(i=0;i<kids.length;i++){
+            if(kids[i].username==$scope.kid){
+                console.log(kids[i].username);
                 kidPosition=i;
                 localStorage.setItem("kids",JSON.stringify(kids));
                 localStorage.setItem("kidPosition",kidPosition);
@@ -115,21 +127,21 @@ function PlayControllerFN($scope,$http) {
             /* new highscore */
 
             var newKids=JSON.parse(localStorage.getItem("kids"));
-            var newScore= newKids[0][localStorage.getItem("kidPosition")];
+            var newScore= newKids[localStorage.getItem("kidPosition")];
+            console.log(newKids);
             console.log(newScore);
-            if(newScore.highscore<$scope.score){
-                alert("new high score");
-                //mechou aadi ha tfol
-                newScore.highscore=$scope.score;
+            if(newScore.highscore<$scope.score && !$scope.newhighscore){
                 $scope.newhighscore=true;
+                newScore.highscore=$scope.score;
+                console.log(newKids[localStorage.getItem("kidPosition")]);
                 newKids[localStorage.getItem("kidPosition")]=newScore;
                 console.log("newkidsss");
-                console.log(newKids);
+                console.log(JSON.stringify(newKids));
                 var data = {
-                    kids:[newKids]
+                    kids:newKids
                 };
                 parentId = localStorage.getItem("parentId");
-                $http.put('http://localhost:3003/user/'+parentId, data).success(function (data, status) {
+               $http.put('http://localhost:3003/user/'+parentId, data).success(function (data, status) {
                     console.log("done");
                 });
             }

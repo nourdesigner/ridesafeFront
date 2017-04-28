@@ -10,6 +10,7 @@ function DashboardControllerFN($scope,$http,$location) {
     $scope.quiz="";
     $scope.isBack=false;
     $scope.successMessage=false;
+    $scope.role=localStorage.getItem("role");
     $http.get("http://localhost:3003/api/quiz").then(function(reponse){
         $scope.quizs=reponse.data;
         console.log(reponse);
@@ -124,7 +125,7 @@ function DashboardControllerFN($scope,$http,$location) {
 
         localStorage.removeItem("role", localStorage.getItem("role"));
         localStorage.setItem("role", "0");
-
+        $scope.role=localStorage.getItem("role");
         localStorage.removeItem("kids", localStorage.getItem("kids"));
         localStorage.setItem("kids", "0");
 
