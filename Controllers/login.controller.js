@@ -22,6 +22,7 @@ function LoginControllerFN($scope,$http,$location) {
             if (reponse.data.length!=0){
                 localStorage.setItem("currentUser", login);
                 $scope.currentUser=localStorage.getItem("currentUser");
+                console.log(reponse.data.role);
                 localStorage.setItem("role", reponse.data.role);
                 $scope.role=localStorage.getItem("role");
                 if(reponse.data.role=="admin"){
@@ -33,8 +34,6 @@ function LoginControllerFN($scope,$http,$location) {
                 if(reponse.data.role=="parent"){
                     $location.path('/historique');
                 }
-
-
             }else {
                 alert('Failed to connect ');
             }
@@ -42,13 +41,26 @@ function LoginControllerFN($scope,$http,$location) {
         })
     }
     $scope.logout=function () {
-        localStorage.removeItem("currentUser", "Wemtek");
+        localStorage.removeItem("currentUser", localStorage.getItem("currentUser"));
         localStorage.setItem("currentUser", "0");
-        localStorage.removeItem("role", "admin");
+
+        localStorage.removeItem("role", localStorage.getItem("role"));
         localStorage.setItem("role", "0");
+
+        localStorage.removeItem("kids", localStorage.getItem("kids"));
+        localStorage.setItem("kids", "0");
+
+        localStorage.removeItem("kid", localStorage.getItem("kid"));
+        $scope.kid="0";
+        localStorage.setItem("kid", "0");
+
+        localStorage.removeItem("niveau", localStorage.getItem("niveau"));
+        localStorage.setItem("niveau", "0");
+
         $scope.currentUser=localStorage.getItem("currentUser");
         console.log(localStorage.getItem("currentUser"));
     }
+
 }
 angular
     .module("demo")

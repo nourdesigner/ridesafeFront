@@ -12,8 +12,10 @@ function DashboardControllerFN($scope,$http,$location) {
     $scope.successMessage=false;
     $http.get("http://localhost:3003/api/quiz").then(function(reponse){
         $scope.quizs=reponse.data;
+        console.log(reponse);
         $scope.length=$scope.quizs.length;
     })
+
     $scope.addQuiz=function () {
         console.log($scope.quizAction);
         $scope.doError=false;
@@ -59,7 +61,6 @@ function DashboardControllerFN($scope,$http,$location) {
             Reponse:$scope.quiz.Reponse
 
         };
-        console.log("updated");
         $http.put('http://localhost:3003/api/quiz/'+id, data).success(function (data, status) {
             if(status==200){
                 $scope.isBack=false;
@@ -87,6 +88,7 @@ function DashboardControllerFN($scope,$http,$location) {
             }
         });
     }
+
     /* ***************************** */
     var currentUser = localStorage.getItem("currentUser");
     if(currentUser!=undefined){
@@ -117,13 +119,23 @@ function DashboardControllerFN($scope,$http,$location) {
         })
     }
     $scope.logout=function () {
-        localStorage.removeItem("currentUser", "Wemtek");
+        localStorage.removeItem("currentUser", localStorage.getItem("currentUser"));
         localStorage.setItem("currentUser", "0");
-        localStorage.removeItem("role", "admin");
-        localStorage.setItem("role", "0");
-        $scope.currentUser=localStorage.getItem("currentUser");
-        $scope.role=localStorage.getItem("role");
 
+        localStorage.removeItem("role", localStorage.getItem("role"));
+        localStorage.setItem("role", "0");
+
+        localStorage.removeItem("kids", localStorage.getItem("kids"));
+        localStorage.setItem("kids", "0");
+
+        localStorage.removeItem("kid", localStorage.getItem("kid"));
+        $scope.kid="0";
+        localStorage.setItem("kid", "0");
+
+        localStorage.removeItem("niveau", localStorage.getItem("niveau"));
+        localStorage.setItem("niveau", "0");
+
+        $scope.currentUser=localStorage.getItem("currentUser");
         console.log(localStorage.getItem("currentUser"));
     }
     

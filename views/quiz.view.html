@@ -25,7 +25,7 @@
         <div class="kids_top_content_middle ">
             <div class="header_container ">
                 <div class="l-page-width">
-                    <h1 style="float: left;padding-top: 10px;">Quiz- Questions {{position}} / {{length}}</h1>
+                    <h1 style="float: left;padding-top: 10px;">Quiz- Questions {{position}} / {{length}}  <span ng-if="kid!=='0'"> - {{kid}} - Niveau {{niveau}}</span> </h1>
                     <ng-include src="'./layouts/login.view.html'"></ng-include>
 
                 </div>
@@ -52,9 +52,51 @@
 
                                             <div class="entry">
                                                 <div class="post-title">
-                                                    <a ng-click="startQuiz('normal')">Commencer le quiz</a><br>
-                                                    <a ng-click="startQuiz('blind')">Commencer une session pour les aveugles</a>
+                                                    <a ng-click="startQuiz('normal',niveau)">Commencer le quiz </a><br>
+                                                    <a ng-click="startQuiz('blind',niveau)">Commencer une session pour les aveugles</a>
                                                 </div>
+                                                <!-- Niveau -->
+                                                <div ng-if="niveau=='1'">
+                                                <div ng-click="startQuiz('normal',niveau)" id="openquiz" ><p>1</p><p class="type">Quiz</p></div>
+                                                <div id="unlockedquiz" ><p>2</p><p class="type">Quiz</p></div>
+                                                <div id="lockedquiz" ><p>3</p><p class="type">Quiz</p></div>
+                                                <div id="lockedquiz"><p>4</p><p class="type">3D</p></div>
+                                                <div id="lockedquiz"><p>5</p><p class="type">3D</p></div>
+                                                </div>
+
+                                                <div ng-if="niveau=='2'">
+                                                    <div id="openquiz" ><p>1</p><p class="type">Quiz</p></div>
+                                                    <div id="openquiz" ><p>2</p><p class="type">Quiz</p></div>
+                                                    <div id="unlockedquiz" ><p>3</p><p class="type">Quiz</p></div>
+                                                    <div id="lockedquiz"><p>4</p><p class="type">3D</p></div>
+                                                    <div id="lockedquiz"><p>5</p><p class="type">3D</p></div>
+
+                                                </div>
+                                                <div ng-if="niveau=='3'">
+                                                    <div id="openquiz" ><p>1</p><p class="type">Quiz</p></div>
+                                                    <div id="openquiz" ><p>2</p><p class="type">Quiz</p></div>
+                                                    <div id="openquiz" ><p>3</p><p class="type">Quiz</p></div>
+                                                    <div id="unlockedquiz"><p>4</p><p class="type">3D</p></div>
+                                                    <div id="lockedquiz"><p>5</p><p class="type">3D</p></div>
+
+                                                </div>
+                                                <div ng-if="niveau=='4'">
+                                                    <div id="openquiz" ><p>1</p><p class="type">Quiz</p></div>
+                                                    <div id="openquiz" ><p>2</p><p class="type">Quiz</p></div>
+                                                    <div id="openquiz" ><p>3</p><p class="type">Quiz</p></div>
+                                                    <div id="openquiz"><p>4</p><p class="type">3D</p></div>
+                                                    <div id="unlockedquiz"><p>5</p><p class="type">3D</p></div>
+
+                                                </div>
+                                                <div ng-if="niveau=='5'">
+                                                    <div id="openquiz" ><p>1</p><p class="type">Quiz</p></div>
+                                                    <div id="openquiz" ><p>2</p><p class="type">Quiz</p></div>
+                                                    <div id="openquiz" ><p>3</p><p class="type">Quiz</p></div>
+                                                    <div id="openquiz"><p>4</p><p class="type">3D</p></div>
+                                                    <div id="openquiz"><p>5</p><p class="type">3D</p></div>
+                                                </div>
+
+
 
 
                                             </div>
@@ -110,33 +152,34 @@
 
                                             <div class="entry">
                                                 <div class="post-title">
-                                                    <a>Vous avez {{score}} / {{length}} réponses correctes</a>
+                                                    <a>You had {{score}} / {{length}} correct answer</a><br>
+                                                    <a>Congratulation new high score  {{kid}} !! : new score {{score}}</a>
                                                 </div><br>
                                                 <div  ng-repeat="r in result">
                                                     <div ng-if="r.correct/r.size>0.9">
                                                         <div class="message_box success-box ">
-                                                            <div class="message_box_header">Excellent {{cuurentUser}}</div>
+                                                            <div class="message_box_header">Excellent {{kid}}</div>
                                                             <p>Vouz avez <b>{{r.correct}} / {{r.size}}</b> réponses correctes dans la catégorie <b>{{r.tag}}</b> </p>
                                                         </div><br>
                                                     </div>
 
                                                     <div ng-if="r.correct/r.size>0.79 && r.correct/r.size<=0.9 ">
                                                         <div class="message_box success-box ">
-                                                            <div class="message_box_header">Très bien {{cuurentUser}}</div>
+                                                            <div class="message_box_header">Very good {{kid}}</div>
                                                             <p>Vouz avez <b>{{r.correct}} / {{r.size}}</b> réponses correctes dans la catégorie <b>{{r.tag}}</b> </p>
                                                         </div><br>
                                                     </div>
 
                                                     <div ng-if="r.correct/r.size>0.6 && r.correct/r.size<0.8 ">
                                                         <div class="message_box notice-box ">
-                                                            <div class="message_box_header">Bien joué {{cuurentUser}}</div>
+                                                            <div class="message_box_header">good{{kid}}</div>
                                                             <p>Vouz avez <b>{{r.correct}} / {{r.size}}</b> réponses correctes dans la catégorie <b>{{r.tag}}</b> </p>
                                                         </div><br>
                                                     </div>
 
                                                     <div ng-if="r.correct/r.size<0.6">
                                                         <div class="message_box alert-box">
-                                                            <div class="message_box_header">Échouer {{cuurentUser}} !! </div>
+                                                            <div class="message_box_header">Fail {{kid}} !! </div>
                                                             <p>Vouz avez  <b>{{r.correct}} / {{r.size}}</b> réponses correctes dans la catégorie <b>{{r.tag}}</b> </p>
                                                         </div><br>
                                                     </div>
