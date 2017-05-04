@@ -1,0 +1,84 @@
+#openquiz {
+    width: 197px;
+    height: 256px;
+    background-image: url("../images/star.png");
+
+    position: relative;
+    display: inline-block;
+    padding-left: 15px;
+}
+
+#openquiz p {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    left: 83px;
+    top : 100px;
+}
+#openquiz p.type{
+    z-index: 100;
+    position: absolute;
+    color: #ffffff;
+    font-size: 13px;
+    /* font-weight: bold; */
+    left: 85px;
+    top: 160px;
+}
+
+#lockedquiz {
+    width: 197px;
+    height: 256px;
+    background-image: url("../images/lockstar.png");
+
+    position: relative;
+    display: inline-block;
+    padding-left: 15px;
+}
+#lockedquiz p.type{
+    z-index: 100;
+    position: absolute;
+    color: #ffffff;
+    font-size: 13px;
+    /* font-weight: bold; */
+    left: 85px;
+    top: 160px;
+}
+#lockedquiz p {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    left: 83px;
+    top : 100px;
+}
+
+#unlockedquiz {
+    width: 197px;
+    height: 256px;
+    background-image: url("../images/unlockedstar.png");
+
+    position: relative;
+    display: inline-block;
+    padding-left: 15px;
+}
+#unlockedquiz p.type{
+    z-index: 100;
+    position: absolute;
+    color: #ffffff;
+    font-size: 13px;
+    /* font-weight: bold; */
+    left: 85px;
+    top: 160px;
+}
+#unlockedquiz p {
+    z-index: 100;
+    position: absolute;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    left: 83px;
+    top : 100px;
+}

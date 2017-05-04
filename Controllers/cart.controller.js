@@ -1,4 +1,4 @@
-function CartControllerFN($scope, $http, CartService, $timeout) {
+function CartControllerFN($scope, $http, CartService, $timeout,$location) {
     $scope.showmean = true;
     $scope.$watch('viewContentLoaded', function () {
         $timeout(function () {
@@ -24,9 +24,7 @@ function CartControllerFN($scope, $http, CartService, $timeout) {
         if($scope.total>0) {
             var yes = confirm("Are you sure you want to check out?");
             if (yes) {
-                CartService.checkout();
-                $scope.cart = CartService.getCart();
-                updateTotal();
+                $location.path('/logincart');
             }
         } else {
             alert('Your Cart Is Empty');

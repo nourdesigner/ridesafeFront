@@ -1,9 +1,7 @@
 <html ng-app="demo">
 
 <body>
-    <script src="lib/angular.js"></script>
-    <script src="lib/angular-route.js"></script>
-    <script src="lib/angular-resource.js"></script>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>RideSafe</title>
@@ -11,6 +9,7 @@
     <link rel="shortcut icon" href="images/favicon.png">
     <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/quizstar.css" />
     <link rel="stylesheet" type="text/css" href="css/maps.css" />
     <link rel="stylesheet" type="text/css" href="css/woocommerce.css" />
     <link rel="stylesheet" type="text/css" href="css/flexnav.css" />
@@ -34,6 +33,11 @@
     <script type='text/javascript' src='js/jquery.isotope.min.js'></script>
     <script type='text/javascript' src='js/jquery.flexnav.min.js'></script>
 
+
+    <script src="lib/angular.js"></script>
+    <script src="lib/angular-route.js"></script>
+    <script src="lib/angular-resource.js"></script>
+    <script src="lib/angular-resource.js"></script>
 <!-- AngularJS files -->
     <script src="app.js"></script>
     <script src="services/cart.service.js"></script>
@@ -42,6 +46,15 @@
     <script src="Controllers/car.controller.js"></script>
     <script src="Controllers/temoignage.controller.js"></script>
     <script src="Controllers/play.controller.js"></script>
+    <script src="Controllers/play.controller.js"></script>
+    <script src="Controllers/dashboard.controller.js"></script>
+    <script src="Controllers/login.controller.js"></script>
+    <script src="Controllers/historique.controller.js"></script>
+    <script src="Controllers/test.controller.js"></script>
+
+    <script src="filters/getQuestionById.js"></script>
+    <script src="filters/ngConfirm.directive.js"></script>
+
     <div ng-view></div>
 </body>
 

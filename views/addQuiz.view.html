@@ -1,0 +1,134 @@
+<div class="top-panel">
+    <div class="l-page-width clearfix">
+        <div class="wrapper">
+            <div class="widget widget_cws_tweets">
+                <div class='cws-widget-content '>
+                    <div class="latest_tweets ">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ .top-panel-->
+<div class="kids-bg-level-1">
+    <div class="bg-level-1"></div>
+    <ng-include src="'./layouts/header.view.html'"></ng-include>
+
+    <!-- HEADER END -->
+</div>
+<!-- .bg-level-1 -->
+<div id="kids_middle_container">
+    <!-- .content -->
+    <div class="kids_top_content">
+        <div class="kids_top_content_middle ">
+            <div class="header_container ">
+                <div class="l-page-width">
+                    <h1 style="float: left;padding-top: 10px;">Quiz- Question {{position}} / {{length}}</h1>
+                    <ul id="breadcrumbs" ng-if="currentUser!=0">
+                        <li><span class="current_crumb" style="float: right">Login as: <b>{{currentUser}}</b> - <p ng-click="logout()">Logout</p></span></li>
+                    </ul>
+                    <ul id="breadcrumbs" ng-if="currentUser==0">
+                        <div class="form-group" style="float: right;padding-top: 5px">
+                            <input type="text" placeholder="Pseudo" ng-model="pseudo">
+                            <input placeholder="password" type="password" ng-model="password">
+                            <input type="button" value="Login" ng-click="doLogin(pseudo,password)"></input>
+                        </div>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- .kids_top_content_middle -->
+    </div>
+    <div class="bg-level-2-full-width-container kids_bottom_content">
+        <div class="bg-level-2-page-width-container no-padding">
+            <section class="kids_bottom_content_container">
+                <!-- ***************** - START Image floating - *************** -->
+                <div class="page-content">
+                    <div class="bg-level-2 first-part"></div>
+                    <div class="container l-page-width">
+                        <div class="entry-container ">
+                            <main class="blog">
+                                <article class="post-item">
+
+
+
+                                    <div ng-hide="position==length||position==0">
+                                        <div class="post-meta">
+
+                                            <!--/ post-date-->
+                                        </div>
+                                        <!--/ post-meta-->
+                                        <div class="post-entry">
+
+                                            <div class="entry">
+                                                <div class="post-title">
+                                                    <a>Question <input type="text" ng-model="question"></a>
+                                                </div>
+
+                                                <form>
+                                                    <input type="radio" ng-model="myVar" value="A"><input type="text" ng-model="a"><br>
+                                                    <input type="radio" ng-model="myVar" value="B"><input type="text" ng-model="b"><br>
+                                                    <input type="radio" ng-model="myVar" value="C"><input type="text" ng-model="c">
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                        <!--/ post-entry -->
+                                        <div class="post-footer">
+                                            <span ng-click="getQuestion()" class="more-link cws_button l-float-right">Add Quiz</span>                                        <div class="post_cats">
+                                        </div>
+                                            <!--/ post-cats -->
+                                            <div class="post_tags">
+                                                <p><span>Tags:</span>
+                                                    <a href='#' title='Tag' class='link'>{{question.tags}}</a> </p>
+                                            </div>
+                                            <!--/ post-tags -->
+                                            <div class="kids_clear"></div>
+                                        </div>
+                                    </div>
+
+                                    <div ng-show="position==length">
+
+                                        <!--/ post-meta-->
+                                        <div class="post-entry">
+
+                                            <div class="entry">
+                                                <div class="post-title">
+                                                    <a>Vous avez {{score}} / {{length}} réponses correctes</a>
+                                                </div><br>
+                                                <div  ng-repeat="r in result">
+                                                    <div class="message_box success-box">
+                                                        <div class="message_box_header">{{r.tag}} : {{r.correct}} / {{r.size}}</div>
+                                                    </div><br>
+                                                </div>
+
+                                                <!--/ entry-->
+                                            </div>
+
+                                        </div>
+
+                                        <!--/ post-footer-->
+                                </article>
+
+                                <!-- comments block -->
+                                <!-- //end comments block -->
+                            </main>
+                            <div class="kids_clear"></div>
+                        </div>
+                        <!-- .entry-container -->
+                    </div>
+                    <div class="bg-level-2 second-part"></div>
+                </div>
+                <!-- ***************** - END Image floating - *************** -->
+            </section>
+            <!-- .bottom_content_container -->
+        </div>
+        <div class="content_bottom_bg"></div>
+    </div>
+</div>
+<!-- .end_content -->
+
+<ng-include src="'./layouts/footer.view.html'"></ng-include>

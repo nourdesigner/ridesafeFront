@@ -1,9 +1,8 @@
-function ShopControllerFN($scope,$http,CartService,$timeout) {
+function ShopControllerFN($scope,$http,CartService) {
 
     $scope.$watch('viewContentLoaded',function(){
-        $timeout(function() {
-            CartService.updateNumItems();
-        },0);
+
+        CartService.updateNumItems();
     });
     $scope.showmean=true;
     $scope.products=[];
@@ -22,7 +21,7 @@ function ShopControllerFN($scope,$http,CartService,$timeout) {
         if(mean !=undefined)
             console.log(mean);
     }
-    
+
     $scope.addcomment = function () {
         var data = {
             _id: $scope.comment._id,
