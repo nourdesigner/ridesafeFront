@@ -1,9 +1,9 @@
 function LoginControllerFN($scope,$http,$location) {
-    $scope.currentUser="0";
-    $scope.pseudo="";
-    $scope.password="";
-    var currentUser = localStorage.getItem("currentUser");
-    $scope.role=localStorage.getItem("role");
+        $scope.currentUser="0";
+        $scope.pseudo="";
+        $scope.password="";
+        var currentUser = localStorage.getItem("currentUser");
+        $scope.role=localStorage.getItem("role");
     console.log("+++++++++"+$scope.role);
     if($scope.role=="admin"){
         $location.path('/dashboard');
@@ -39,6 +39,22 @@ function LoginControllerFN($scope,$http,$location) {
 
         })
     }
+    $scope.doLoginCart=function (login,password) {
+        $http.get("http://localhost:3003/user/"+login+"/"+password).then(function(reponse){
+            if (reponse.data.length!=0){
+                localStorage.setItem("currentUser", login);
+                $scope.currentUser=localStorage.getItem("currentUser");
+                console.log(reponse.data.role);
+                localStorage.setItem("role", reponse.data.role);
+                $scope.role=localStorage.getItem("role");
+
+            }else {
+                alert('Failed to connect ');
+            }
+
+        })
+    }
+
     $scope.logout=function () {
         localStorage.removeItem("currentUser", localStorage.getItem("currentUser"));
         localStorage.setItem("currentUser", "0");

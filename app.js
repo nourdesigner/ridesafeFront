@@ -28,6 +28,10 @@ function configFN($routeProvider) {
             controller: "TemoignageController",
             templateUrl: "views/review.view.html"
         })
+        .when('/cart', {
+            controller: "CartController",
+            templateUrl: "views/cart.view.html"
+        })
         .when('/addQuiz', {
             controller: "PlayController",
             templateUrl: "views/addQuiz.view.html"
@@ -40,7 +44,10 @@ function configFN($routeProvider) {
             controller:"LoginController",
             templateUrl:"views/loginpage.view.html"
         })
-        /* ******* Dashboard routes ******* */
+        .when('/logincart',{
+            controller:"LoginController",
+            templateUrl:"views/logincart.view.html"
+        })
         .when('/dashboard', {
             controller: "DashboardController",
             templateUrl: "views/dashboard/dashboard.view.html"
