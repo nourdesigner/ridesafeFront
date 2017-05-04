@@ -22,7 +22,6 @@ function LoginControllerFN($scope,$http,$location) {
             if (reponse.data.length!=0){
                 localStorage.setItem("currentUser", login);
                 $scope.currentUser=localStorage.getItem("currentUser");
-                console.log(reponse.data.role);
                 localStorage.setItem("role", reponse.data.role);
                 $scope.role=localStorage.getItem("role");
                 if(reponse.data.role=="admin"){
