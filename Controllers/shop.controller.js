@@ -1,8 +1,9 @@
 function ShopControllerFN($scope,$http,CartService) {
 
     $scope.$watch('viewContentLoaded',function(){
-
-        CartService.updateNumItems();
+        $timeout(function() {
+            CartService.updateNumItems();
+        },0);
     });
     $scope.showmean=true;
     $scope.products=[];

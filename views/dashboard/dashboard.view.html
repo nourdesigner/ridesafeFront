@@ -42,7 +42,7 @@
                     <div class="container l-page-width">
 
 
-                        <div class='grid-row clearfix' style='margin-top:0px;' ng-hide="isBack" ng-if="role=='admin'">
+                        <div class='grid-row clearfix' style='margin-top:0px;' ng-hide="isBack || isBackprod" ng-if="role=='admin'">
                             <div class='grid-col grid-col-12'>
                                 <section class='cws-widget'>
                                     <section class='cws_widget_content'>
@@ -52,7 +52,7 @@
                                                     <div class="tabs">
                                                         <a class="tab active" role="tab" tabindex="0">Quiz</a><!--
                                                          --><a class="tab" role="tab" tabindex="1">Shop</a><!--
-                                                         --><a class="tab" role="tab" tabindex="2">Review</a>
+                                                         -->
                                                     </div>
                                                     <div class="tab_items">
                                                         <div class="tab_item" role="tabpanel" tabindex="0" style="display: block;">
@@ -69,7 +69,7 @@
 
                                                                                         </div>
                                                                                         <div class="button_part">
-                                                                                            <a class="cws_button large square custom_color" style="background:#8ddd67; color:#fff;" ng-click="isBack=true;quizAction=false">Add new quiz</a></div>
+                                                                                            <a class="cws_button large square custom_color" style="background:#8ddd67; color:#fff;" ng-click="addQ()">Add new quiz</a></div>
                                                                                     </div>
                                                                                 </div>
                                                                             </section>
@@ -121,13 +121,56 @@
 
 
                                                         <div class="tab_item" role="tabpanel" tabindex="1" style="display: none;">
-                                                            <p>Morbi non risus massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc tellus ante, auctor eget hendrerit porttitor. Mollis condimentum ligula. Nulla aliquet, est nec rutrum pharetra.&nbsp;Phasellus egestas nulla urna, nec interdum nibh pretium vitae. Nulla tincidunt neque nisl, sit amet semper felis imperdiet et. Sed placerat fermentum fringilla. Morbi nec purus vel nulla varius aliquet. Sed consectetur ipsum nulla, at lacinia diam dapibus nec. Phasellus eleifend, magna dictum efficitur placerat, ligula nisl porttitor turpis, a fermentum nisi lorem ac nulla. Integer sollicitudin ex at sapien congue pellentesque.</p>
-                                                        </div>
+
+                                                            <div class="grid-row clearfix" style="margin-top:0px;">
+                                                                <div class="grid-col grid-col-12">
+                                                                    <section class="cws-widget">
+                                                                        <section class="cws_widget_content">
+                                                                            <div class="cws-widget callout_widget clearfix ">
+                                                                                <div class="content_wrapper">
+                                                                                    <div class="text_part">
+                                                                                        <div class="title"><input placeholder="type product name..." ng-model="searchingProductByName" style="width: 100%"></div>
+
+                                                                                    </div>
+                                                                                    <div class="button_part">
+                                                                                        <a class="cws_button large square custom_color" style="background:#8ddd67; color:#fff;" ng-click="addProduct()">Add new product</a></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </section>
+                                                                    </section>
+                                                                </div>
+                                                            </div><br>
+
+                                                            <div >
+                                                                <div class="grid-row clearfix" style="margin-top:0px;">
+                                                                    <div class="grid-col grid-col-12">
+                                                                        <section class="cws-widget">
+                                                                            <section class="cws_widget_content">
+                                                                                <div class="cws-widget callout_widget clearfix ">
+                                                                                    <ul class="products" style="padding-left: 80px">
+                                                                                        <li class="first product has-post-thumbnail ng-scope" ng-repeat="p in products  | filter:searchingProductByName">
+                                                                                            <div class="sale-wrapper"></div>
+                                                                                            <div class="content-wrapper">
+                                                                                                <figure>
+                                                                                                    <a href="pic/woocommerce/cd_4_angle.jpg" data-rel="prettyPhoto" class="prettyPhoto kids_picture" title="cd_4_angle" rel="prettyPhoto">
+                                                                                                        <img src="pic/woocommerce/250x250-img-4.jpg" class="attachment-shop_catalog" alt="cd_4_angle"><span class="kids_curtain">&nbsp;</span></a>
+                                                                                                </figure>
+                                                                                            </div>
+                                                                                            <a href="shop-single-item.html">
+                                                                                                <div class="title ng-binding">{{p.productName}}</div>
+                                                                                            </a>
+                                                                                            <span class="price"><span class="amount ng-binding">{{p.price}} €</span></span>
+                                                                                            <a ng-click="updateProduct()" rel="nofollow" class="button add_to_cart_button product_type_simple">Update</a><a ng-click="deleteProduct(p._id,$index)"> - Delete</a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </section>
+                                                                        </section>
+                                                                    </div>
+                                                                </div><br>
+                                                            </div>                                                        </div>
 
 
-                                                        <div class="tab_item" role="tabpanel" tabindex="2" style="display: none;">
-                                                            <p>Cras cursus tempor leo, at egestas lacus imperdiet non. Etiam a dignissim nisl. Duis vehicula dapibus elit. Sed commodo vulputate pretium. Fusce in magna aliquam arcu gravida laoreet ac et turpis.&nbsp;Phasellus egestas nulla urna, nec interdum nibh pretium vitae. Nulla tincidunt neque nisl, sit amet semper felis imperdiet et. Sed placerat fermentum fringilla. Morbi nec purus vel nulla varius aliquet. Sed consectetur ipsum nulla, at lacinia diam dapibus nec. Phasellus eleifend, magna dictum efficitur placerat, ligula nisl porttitor turpis, a fermentum nisi lorem ac nulla. Integer sollicitudin ex at sapien congue pellentesque.</p>
-                                                        </div>
                                                     </div>
                                                 </div>
                                         </div>
@@ -184,9 +227,44 @@
                             <div class="post-footer">
                                 <p ng-click="isBack=false" class="more-link cws_button l-float-right">Back</p>
                                 <p ng-click="resetAction()" class="more-link cws_button l-float-right" style="margin-right: 20px">Reset</p>
-
                                 <p ng-click="addQuiz()" class="more-link cws_button l-float-right" ng-if="!quizAction" style="margin-right: 20px">Add Quiz {{doUpdate}}</p>
                                 <p ng-click="doUpdateQuiz(quiz._id)" class="more-link cws_button l-float-right"ng-if="quizAction" style="margin-right: 20px">Update Quiz</p>
+
+                                <!--/ post-cats -->
+                                <div class="post_tags">
+                                </div>
+                                <!--/ post-tags -->
+                                <div class="kids_clear"></div>
+                            </div>
+                        </div>
+                        <!-- add product block -->
+                        <div class="grid-col grid-col-12" style="background: blanchedalmond;" ng-show="updateProductShow">
+                            <section class="cws-widget">
+                                <section class="cws_widget_content">
+                                    <div class="cws-widget callout_widget clearfix">
+                                        <table>
+                                            <tr>
+                                                <td>Product name</td>
+                                                <td><input type="text" ng-model="p.productName" style="width:100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Price</td>
+                                                <td><input type="text" ng-model="p.price" style="width:100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Category</td>
+                                                <td><input type="text" ng-model="p.category" style="width:100%"></td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </section>
+                            </section>
+                            <div class="post-footer">
+                                <p ng-click="isBackprod=false" class="more-link cws_button l-float-right">Back</p>
+                                <p ng-click="resetAction()" class="more-link cws_button l-float-right" style="margin-right: 20px">Reset</p>
+                                <p ng-click="doAddProduct()" class="more-link cws_button l-float-right" ng-if="!productAction" style="margin-right: 20px">Add product </p>
+                                <p ng-click="doUpdateProduct(p)" class="more-link cws_button l-float-right"ng-if="productAction" style="margin-right: 20px">Update product</p>
 
                                 <!--/ post-cats -->
                                 <div class="post_tags">

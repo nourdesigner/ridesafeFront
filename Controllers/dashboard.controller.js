@@ -7,16 +7,23 @@ function DashboardControllerFN($scope,$http,$location) {
 
     /* ****************************** */
     $scope.quiz="";
+    $scope.products="";
     $scope.isBack=false;
     $scope.successMessage=false;
     $scope.role=localStorage.getItem("role");
     $http.get("http://localhost:3003/api/quiz").then(function(reponse){
         $scope.quizs=reponse.data;
-        console.log(reponse);
         $scope.length=$scope.quizs.length;
     })
-
+    $http.get("http://localhost:3003/api/produit").then(function(reponse){
+        $scope.products=reponse.data;
+    })
+    /* ********QUIZ*********** */
+    $scope.addQ=function () {
+        $scope.isBack=true;$scope.quizAction=false;
+    }
     $scope.addQuiz=function () {
+        console.log("addQuiz");
         console.log($scope.quizAction);
         $scope.doError=false;
         if ($scope.quiz.Question==undefined  || $scope.quiz.Reponses[0]==undefined || $scope.quiz.Reponses[1]==undefined || $scope.quiz.Reponses[2]==undefined || $scope.quiz.tags==undefined || $scope.quiz.Reponse==undefined){
@@ -34,15 +41,13 @@ function DashboardControllerFN($scope,$http,$location) {
                     $scope.isBack=false;
                     $scope.quizAction=false;
                     $scope.successMessage=true;
-                    $http.get("http://localhost:3003/api/quiz").then(function(reponse){
-                        $scope.quizs=reponse.data;
-                    })
+                    $scope.quizs.push(data);
+
                 }
             });
         }
 
     }
-    
     $scope.updateQuiz=function (id) {
         $scope.quizAction=true;
         console.log($scope.quizAction);
@@ -52,7 +57,6 @@ function DashboardControllerFN($scope,$http,$location) {
             console.log($scope.quiz);
         })
     }
-
     $scope.doUpdateQuiz=function (id) {
         var data = {
             Question: $scope.quiz.Question,
@@ -72,11 +76,10 @@ function DashboardControllerFN($scope,$http,$location) {
         });
 
     }
-
     $scope.resetAction=function () {
-        $scope.quiz.Question=$scope.quiz.c1=$scope.quiz.c2=$scope.quiz.c3=$scope.quiz.tags=$scope.quiz.Reponse="";
+        $scope.quiz.Question=$scope.quiz.Reponses[1]=$scope.quiz.Reponses[0]=$scope.quiz.Reponses[2]=$scope.quiz.tags=$scope.quiz.Reponse="";
+        $scope.p="";
     }
-    
     $scope.removeQuiz=function (id) {
         $http.delete('http://localhost:3003/api/quiz/'+id).success(function (data, status) {
             if(status==200){
@@ -89,6 +92,48 @@ function DashboardControllerFN($scope,$http,$location) {
         });
     }
 
+    /* ********PRODUCT*********** */
+    $scope.updateProductShow=false;
+    
+    $scope.addProduct=function () {
+
+        $scope.productAction=false;
+        $scope.updateProductShow=true;
+        $scope.isBackprod=true;
+
+        console.log("Logged");
+    }
+    $scope.doAddProduct=function () {
+        console.log($scope.p);
+        $http.post("http://localhost:3003/api/produit",$scope.p).then(function (response) {
+            console.log("added");
+        })
+    }
+    $scope.updateProduct =function (p) {
+        $scope.p=p;
+        $scope.productAction=true;
+        $scope.updateProductShow=true;
+        $scope.isBackprod=true;
+
+    }
+    $scope.doUpdateProduct=function (p) {
+        $http.put("http://localhost:3003/api/produit/"+p._id,p).then(function () {
+            console.log("updateProduit");
+            $scope.isBackprod=false;
+            $scope.successMessage=true;
+            $http.get("http://localhost:3003/api/produit").then(function(reponse){
+                $scope.products=reponse.data;
+            })
+        })
+    }
+    $scope.deleteProduct=function (id,$index) {
+        $http.delete("http://localhost:3003/api/produit/"+id).then(function (response) {
+            $scope.products.splice($index,1);
+        })
+    }
+    $scope.addP=function () {
+        $scope.isBackP=true;
+    }
     /* ***************************** */
     var currentUser = localStorage.getItem("currentUser");
     if(currentUser!=undefined){
