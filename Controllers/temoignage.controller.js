@@ -104,6 +104,11 @@ function TemoignageControllerFN($scope,$http,CartService,$timeout) {
 
     } */
  $scope.likereport=function (id,type) {
+     if(currentUser=='0'){
+         alert("You can't like or dislike a review without login,please login first to continue");
+     }else{
+
+
      $http.get("http://localhost:3003/api/likereporting/"+id+"/"+$scope.currentUser).then(function (reponse) {
 
             if(reponse.data==null){
@@ -119,6 +124,7 @@ function TemoignageControllerFN($scope,$http,CartService,$timeout) {
                     }
                 })
             }else{
+                console.log(reponse.data.type==type);
                 if (reponse.data.type==type) {
                     alert("already "+type+"ed")
                 }
@@ -133,17 +139,20 @@ function TemoignageControllerFN($scope,$http,CartService,$timeout) {
                 $http.put("http://localhost:3003/api/likereporting/"+reponse.data._id,data).success(function (reponse,status) {
                     if(status==200){
                         console.log("put");
+                        console.log(data);
                     }
                 })
                 $http.get("http://localhost:3003/api/reporting/"+id).then(function (rep) {
                     console.log(rep.data);
                     if(type=='like'){
                         var data2={
-                            like:parseInt(rep.data.like)+1
+                            like:parseInt(rep.data.like)+1,
+                            dislike:parseInt(rep.data.dislike)-1
                         }
                     }else{
                         var data2={
-                            dislike:parseInt(rep.data.like)+1
+                            dislike:parseInt(rep.data.dislike)+1,
+                            like:parseInt(rep.data.like)-1,
                         }
                     }
 
@@ -151,7 +160,10 @@ function TemoignageControllerFN($scope,$http,CartService,$timeout) {
 
                     $http.put("http://localhost:3003/api/reporting/"+id,data2).success(function (reponse,status) {
                         if(status==200){
-                            console.log(reponse.data);
+                            $http.get("http://localhost:3003/api/reporting").then(function (r) {
+                                $scope.reporting=r.data;
+                                console.log(r.data);
+                            })
                         }
                     })
                 })
@@ -159,6 +171,7 @@ function TemoignageControllerFN($scope,$http,CartService,$timeout) {
             }
 
      }});
+ }
  }
     var currentUser = localStorage.getItem("currentUser");
     if(currentUser!=undefined){
