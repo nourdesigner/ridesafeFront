@@ -14,6 +14,12 @@ function configFN($routeProvider) {
             controller: "PlayController",
             templateUrl: "views/quiz.view.html"
         })
+        .when('/play3d', {
+            templateUrl: "views/playunity.view.html"
+        })
+        .when('/play3d2', {
+            templateUrl: "views/playunity2.view.html"
+        })
         .when('/addreview', {
             controller: "TemoignageController",
             templateUrl: "views/addTemoignages.view.html"

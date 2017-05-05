@@ -1,5 +1,4 @@
 
-<!-- HEADER BEGIN -->
 <div class="top-panel">
     <div class="l-page-width clearfix">
         <div class="wrapper">
@@ -17,6 +16,7 @@
 <div class="kids-bg-level-1">
     <div class="bg-level-1"></div>
     <ng-include src="'./layouts/header.view.html'"></ng-include>
+    <!--/ #kids_header-->
     <!-- HEADER END -->
 </div>
 <!-- .bg-level-1 -->
@@ -26,67 +26,73 @@
         <div class="kids_top_content_middle ">
             <div class="header_container ">
                 <div class="l-page-width">
-                    <h1 style="float: left;padding-top: 10px;">Historique</h1>
+                    <h1 style="float: left;padding-top: 10px;">Preferences</h1>
                     <ng-include src="'./layouts/login.view.html'"></ng-include>
                 </div>
             </div>
         </div>
         <!-- .kids_top_content_middle -->
     </div>
-    <div class="bg-level-2-full-width-container kids_bottom_content">
+    <div class="bg-level-2-full-width-container kids_bottom_content" ng-if="role=='parent'">
         <div class="bg-level-2-page-width-container no-padding">
             <section class="kids_bottom_content_container">
                 <!-- ***************** - START Image floating - *************** -->
                 <div class="page-content">
                     <div class="bg-level-2 first-part"></div>
                     <div class="container l-page-width">
+                        <div class="entry-container ">
+                            <main>
 
-    <div class='grid-row clearfix' ng-if="currentUser!=0">
+
+    <div class='grid-row clearfix'>
         <div class='grid-col grid-col-12'>
+
             <section class='cws-widget'>
-
-            <section class='cws-widget' >
-                <section class='cws_widget_content accordion_widget'>
-
-
-                        <div class='accordion_section featured' ng-repeat="h in hisotriques">
-                            <div class='accordion_title'><i class='acc_featured_icon fa fa-star'></i>{{h.date}} - {{h.score}}<i class='accordion_icon'></i></div>
-                            <div class='accordion_content'>
-                                <p ng-repeat="log in h.logs">{{log.questionId | quesByID}}</p>
-                            </div>
-                        </div>
-
-                </section>
-
-            </section>
-
-
-        </div>
-    </div>
-                        <div class='grid-row clearfix' ng-if="currentUser==0">
-                            <div class='grid-col grid-col-12'>
-                                <section class='cws-widget'>
-                        <section class='cws-widget'  >
-                            <section class='cws_widget_content accordion_widget'>
-                                <div class='accordion_section featured'>
-                                    <div class='accordion_title'><i class='acc_featured_icon fa fa-star'></i>You need to be connected to consult your history<i class='accordion_icon'></i></div>
-                                    <div class='accordion_content' style='display: none;'>
-                                        <div class="form-group" >
-                                            <input type="text" placeholder="Pseudo" ng-model="pseudo">
-                                            <input placeholder="password" type="password" ng-model="password">
-                                            <input type="button" class="cws_button" value="Login" ng-click="doLogin(pseudo,password)">
-                                            <input type="button" class="cws_button" value="Sign up"  style="background:#f2a1b0; color:#fff" ng-click="doLogin(pseudo,password)">
+                <section class='cws_widget_content'>
+                    <div class="recent_projects ">
+                        <h3 class="section-title">Kids list</h3>
+                        <div class="projects_carousel blog clearfix" data-carousel-column="2" >
+                            <!-- kids -->
+                            <div class="iso-item" ng-repeat="kid in kids">
+                                <article class="post-item">
+                                    <div class="post-meta">
+                                        <div class="post-date">
+                                            <span class="day"> {{kid.highscore}}</span>
+                                            <span class="month">HighScore</span>
                                         </div>
                                     </div>
-                                </div>
-                            </section>
+                                    <div class="post-entry">
+                                        <div class="content-wrapper alignleft">
+                                            <figure>
+                                                <a data-rel="prettyPhoto[lt_posts]" class="prettyPhoto kids_picture" title="Image Post" href="pic/HappyFeet_1st4.jpg"><img class="pic" src="pic/185x185-img-1.jpg" alt="" /></a>
+                                            </figure>
+                                        </div>
+                                        <div class="entry">
+                                            <div class="post-title">
+                                                <a href="#">{{kid.username}} - {{kid.niveau}}</a>
 
-                        </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="post-footer">
+                                        <span class="l-float-right"><a ng-click="kidsSession(kid.username,kid.niveau)" class="more-link cws_button">Play now!</a></span>
+                                        <span class="l-float-left"><a ng-click="showHistory(kid.username)" class="more-link cws_button">View history</a></span>
 
-
+                                        <div class="kids_clear"></div>
+                                    </div>
+                                </article>
                             </div>
+
                         </div>
-    <!-- comments block -->
+                        <!--/ .projects-carousel -->
+                    </div>
+                    <!--/ .work-carousel-->
+                    <hr />
+                </section>
+            </section>
+        </div>
+    </div>
+
     <!-- //end comments block -->
     </main>
     <div class="kids_clear"></div>
@@ -101,6 +107,32 @@
 </div>
 <div class="content_bottom_bg"></div>
 </div>
+
+    <div class='grid-row clearfix' ng-if="currentUser==0">
+
+        <div class='grid-col grid-col-12'>
+            <section class='cws-widget'>
+                <section class='cws-widget'  >
+                    <section class='cws_widget_content accordion_widget'>
+                        <div class='accordion_section featured'>
+                            <div class='accordion_title'><i class='acc_featured_icon fa fa-star'></i>You need to be connected to consult your history<i class='accordion_icon'></i></div>
+                            <div class='accordion_content' style='display: none;'>
+                                <div class="form-group" >
+                                    <input type="text" placeholder="Pseudo" ng-model="pseudo">
+                                    <input placeholder="password" type="password" ng-model="password">
+                                    <input type="button" class="cws_button" value="Login" ng-click="doLogin(pseudo,password)">
+                                    <input type="button" class="cws_button" value="Sign up"  style="background:#f2a1b0; color:#fff" ng-click="doLogin(pseudo,password)">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </section>
+            </section>
+
+
+        </div>
+    </div>
 </div>
 <!-- .end_content -->
 <ng-include src="'./layouts/footer.view.html'"></ng-include>
