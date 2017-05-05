@@ -59,7 +59,7 @@
 
                                                             </div>
                                                             <div class="button_part">
-                                                                <a class="cws_button large square custom_color" style="background:#8ddd67; color:#fff;" ng-click="addReviewAction=true">Add review</a></div>
+                                                                <a class="cws_button large square custom_color" style="background:#8ddd67; color:#fff;" ng-click="addrev()">Add review</a></div>
                                                         </div>
                                                     </div>
                                                 </section>
@@ -128,8 +128,8 @@
                                     <!--/ post-entry -->
                                     <div class="post-footer">
 
-                                        <p><span ng-click="likereport(report._id)" style="float: right;" class="more-link cws_button" ng-hide="currentUser==report.user">Like<i class="button-icon fa fa-thumbs-up" style="color:#fff"></i></span> </p>
-                                        <p> <span ng-click="dislikereport(report._id)" style="float: right;margin-right: 10px"class="more-link cws_button" ng-hide="currentUser==report.user">Dislike<i class="button-icon fa fa-thumbs-down" style="color:#fff"></i></span>  </p>
+                                        <p><span ng-click="likereport(report._id,'like')" style="float: right;" class="more-link cws_button" ng-hide="currentUser==report.user">Like {{report.like}}<i class="button-icon fa fa-thumbs-up" style="color:#fff"></i></span> </p>
+                                        <p> <span ng-click="likereport(report._id,'dislike')" style="float: right;margin-right: 10px"class="more-link cws_button" ng-hide="currentUser==report.user">Dislike {{report.dislike}}<i class="button-icon fa fa-thumbs-down" style="color:#fff"></i></span>  </p>
                                         <p> <span ng-click="signalreport(report._id)"style="float: left;margin-right: 10px" class="more-link cws_button" ng-hide="currentUser==report.user">Signal <i class="fa fa-frown-o" aria-hidden="true"></i></span>   </p>
                                         <p> <span ng-click="updatereport(report._id)"style="float: left;margin-right: 10px" class="more-link cws_button" ng-show="currentUser==report.user">Update <i class="fa fa-refresh" aria-hidden="true"></i></span>   </p>
                                         <!--/ post-tags -->
