@@ -124,83 +124,86 @@ function PlayControllerFN($scope,$http,CartService,$timeout) {
         }
     })
     $scope.getQuestion = function  () {
-        if($scope.currentUser!=0){
-
-
-            $scope.question=$scope.questions[$scope.position];
+        if($scope.currentUser!=0) {
+             console.log($scope.myVar);
+            $scope.question = $scope.questions[$scope.position];
             /* new highscore */
 
-            var newKids=JSON.parse(localStorage.getItem("kids"));
-            var newScore= newKids[localStorage.getItem("kidPosition")];
+            var newKids = JSON.parse(localStorage.getItem("kids"));
+            var newScore = newKids[localStorage.getItem("kidPosition")];
             console.log(newKids);
             console.log(newScore);
-            if(newScore.highscore<$scope.score && !$scope.newhighscore){
-                $scope.newhighscore=true;
-                newScore.highscore=$scope.score;
+            if (newScore.highscore < $scope.score && !$scope.newhighscore) {
+                $scope.newhighscore = true;
+                newScore.highscore = $scope.score;
                 console.log(newKids[localStorage.getItem("kidPosition")]);
-                newKids[localStorage.getItem("kidPosition")]=newScore;
+                newKids[localStorage.getItem("kidPosition")] = newScore;
                 console.log("newkidsss");
                 console.log(JSON.stringify(newKids));
                 var data = {
-                    kids:newKids
+                    kids: newKids
                 };
                 parentId = localStorage.getItem("parentId");
-               $http.put('http://localhost:3003/user/'+parentId, data).success(function (data, status) {
+                $http.put('http://localhost:3003/user/' + parentId, data).success(function (data, status) {
                     console.log("done");
                 });
             }
 
             /* end new highscore */
-            if($scope.type=="blind"){
+            if ($scope.type == "blind") {
                 window.speechSynthesis.speak(new SpeechSynthesisUtterance($scope.question.Question));
-                window.speechSynthesis.speak(new SpeechSynthesisUtterance("A = "+$scope.question.Reponses[0]));
-                window.speechSynthesis.speak(new SpeechSynthesisUtterance("B ="+$scope.question.Reponses[1]));
-                window.speechSynthesis.speak(new SpeechSynthesisUtterance("C ="+$scope.question.Reponses[2]));
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance("A = " + $scope.question.Reponses[0]));
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance("B =" + $scope.question.Reponses[1]));
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance("C =" + $scope.question.Reponses[2]));
             }
 
-            if($scope.position!=0){
-                if($scope.myVar==$scope.questions[$scope.position-1].Reponse){
+            if ($scope.position != 0) {
+                if ($scope.myVar == $scope.questions[$scope.position - 1].Reponse) {
                     $scope.score++;
-                   // console.log("indexOF "+$scope.questions[$scope.position-1].tags +":"+$scope.tags.indexOf($scope.questions[$scope.position-1].tags));
-                    $scope.tags[$scope.tags.indexOf($scope.questions[$scope.position-1].tags)+2]++;
-                  //  console.log("After Score ="+$scope.tags[$scope.tags.indexOf($scope.questions[$scope.position-1].tags)+3]);
+                    // console.log("indexOF "+$scope.questions[$scope.position-1].tags +":"+$scope.tags.indexOf($scope.questions[$scope.position-1].tags));
+                    $scope.tags[$scope.tags.indexOf($scope.questions[$scope.position - 1].tags) + 2]++;
+                    //  console.log("After Score ="+$scope.tags[$scope.tags.indexOf($scope.questions[$scope.position-1].tags)+3]);
 
                 }
-                else{
-                    if($scope.falseTags.indexOf($scope.questions[$scope.position-1].tags)>-1 && $scope.questions.length<20){
-                        $scope.generatedTag = $scope.questions[$scope.position-1].tags;
-                        console.log("generated"+ $scope.generatedTag);
-                        $http.get("http://localhost:3003/api/quiz/tags/"+$scope.generatedTag).then(function(reponse){
+                else {
+                    if ($scope.falseTags.indexOf($scope.questions[$scope.position - 1].tags) > -1 && $scope.questions.length < 20) {
+                        $scope.generatedTag = $scope.questions[$scope.position - 1].tags;
+                        console.log("generated" + $scope.generatedTag);
+                        $http.get("http://localhost:3003/api/quiz/tags/" + $scope.generatedTag).then(function (reponse) {
                             $scope.generatedQuestions = reponse.data;
-                            $scope.questions  =$scope.questions.concat($scope.generatedQuestions);
-                            $scope.length=$scope.questions.length;
+                            $scope.questions = $scope.questions.concat($scope.generatedQuestions);
+                            $scope.length = $scope.questions.length;
                             len = $scope.questions.length;
-                            $scope.falseTags.splice( $scope.falseTags.indexOf($scope.generatedTag),1);
+                            $scope.falseTags.splice($scope.falseTags.indexOf($scope.generatedTag), 1);
                         })
                     }
-                    else{
-                        $scope.falseTags.push($scope.questions[$scope.position-1].tags);
-                        console.log("False tags ="+$scope.falseTags);
+                    else {
+                        $scope.falseTags.push($scope.questions[$scope.position - 1].tags);
+                        console.log("False tags =" + $scope.falseTags);
                     }
                 }
             }
 
-            if($scope.tags.indexOf($scope.question.tags)>-1){
-                $scope.tags[$scope.tags.indexOf($scope.question.tags)+1]++;
+            if ($scope.tags.indexOf($scope.question.tags) > -1) {
+                $scope.tags[$scope.tags.indexOf($scope.question.tags) + 1]++;
                 console.log($scope.tags)
-            }else {
-                $scope.tags.push($scope.question.tags,1,0);
-               // console.log($scope.tags)
+            } else {
+                $scope.tags.push($scope.question.tags, 1, 0);
+                // console.log($scope.tags)
             }
 
-            $scope.myVar="";
+            $scope.myVar = "";
             $scope.position++;
             pos++;
 
-            if(pos==len){
+            if (pos == len) {
 
-                for(var i=0;i<$scope.tags.length;i+=3){
-                    $scope.result.push({"tag":$scope.tags[i],"size":$scope.tags[i+1],"correct":$scope.tags[i+2]});
+                for (var i = 0; i < $scope.tags.length; i += 3) {
+                    $scope.result.push({
+                        "tag": $scope.tags[i],
+                        "size": $scope.tags[i + 1],
+                        "correct": $scope.tags[i + 2]
+                    });
                 }
             }
 

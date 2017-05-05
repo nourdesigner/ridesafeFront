@@ -173,6 +173,27 @@ function TemoignageControllerFN($scope,$http,CartService,$timeout) {
      }});
  }
  }
+ 
+ $scope.signalreport=function (id) {
+     $http.get("http://localhost:3003/api/likereporting/"+id+"/"+$scope.currentUser+"/signal").then(function (reponse) {
+         console.log(reponse.data.type=='signal');
+         if(reponse.data==null || reponse.data.type!='signal'){
+             console.log("signaled");
+             var data={
+                 idReporting : id,
+                 idUser : $scope.currentUser,
+                 type :'signal'
+             }
+             $http.post("http://localhost:3003/api/likereporting",data).success(function (reponse,status) {
+                 if (status==200){
+                     alert("You signaled this review , we ll check it and re contact you if there's any update");
+                 }
+             })
+         }else if(reponse.data.type=='signal'){
+             alert("You already signaled this review , we ll check it as soon as possible");
+         }
+     })
+ }
     var currentUser = localStorage.getItem("currentUser");
     if(currentUser!=undefined){
         $scope.currentUser=currentUser;
