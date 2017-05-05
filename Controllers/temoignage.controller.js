@@ -1,4 +1,9 @@
-function TemoignageControllerFN($scope,$http,$location) {
+function TemoignageControllerFN($scope,$http,CartService,$timeout) {
+    $scope.$watch('viewContentLoaded',function(){
+        $timeout(function() {
+            CartService.updateNumItems();
+        },0);
+    });
     $scope.currentUser="0";
     $scope.pseudo="";
     $scope.password="";

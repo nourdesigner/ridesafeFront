@@ -1,5 +1,9 @@
-function PlayControllerFN($scope,$http) {
-
+function PlayControllerFN($scope,$http,CartService,$timeout) {
+    $scope.$watch('viewContentLoaded',function(){
+        $timeout(function() {
+            CartService.updateNumItems();
+        },0);
+    });
     $scope.questions=[];
     $scope.position=0;
     $scope.myVar="";
